@@ -1,0 +1,20 @@
+{
+  "name": "asistente-auditoria-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "docx": "9.14.0",
+    "express": "5.3.0",
+    "pdfmake": "0.2.23"
+  }
+}
