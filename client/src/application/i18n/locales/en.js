@@ -106,6 +106,8 @@ export default {
   'criteria.clearVisible': 'Clear visible',
   'criteria.textLanguageNote': 'The official text of this framework is in English and is shown untranslated so the requirement is not altered.',
   'criteria.confirmRemoveAudited': 'You are removing {n} item(s) you already audited; that result will be lost. Continue?',
+  'criteria.onlySelected': 'Selected only ({n})',
+  'criteria.noneVisible': 'No items match these filters.',
   'criteria.customCount': 'Custom items ({n})',
   'criteria.customCode': 'Code',
   'criteria.customCodeHint': 'Optional, for example POL-01.',

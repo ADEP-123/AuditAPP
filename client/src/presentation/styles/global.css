@@ -88,6 +88,7 @@ a { color: var(--primary); }
 .badge {
   display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 0.8rem;
   border: 1px solid currentColor;
+  white-space: nowrap; /* "No aplica" en dos líneas se veía roto */
 }
 .badge.success { color: var(--success); }
 .badge.danger { color: var(--danger); }
@@ -118,7 +119,7 @@ input, select, textarea {
   border-radius: 8px; padding: 8px 10px; width: 100%;
 }
 textarea { resize: vertical; }
-input[type='checkbox'], input[type='radio'] { width: auto; }
+input[type='checkbox'], input[type='radio'] { width: auto; flex: none; min-width: 16px; min-height: 16px; }
 .check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
 .consent { border-color: var(--info); }
 .kv { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 0 0 12px; }
@@ -139,6 +140,9 @@ input[type='checkbox'], input[type='radio'] { width: auto; }
 .checklist { list-style: none; margin: 0; padding: 0; }
 .checklist li { padding: 10px 4px; border-bottom: 1px solid var(--border); }
 .checklist .badge { margin-left: 6px; }
+.scroll-list { max-height: min(60vh, 640px); overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--border); border-radius: 8px; padding: 0 10px; }
+.scroll-list .empty { padding: 12px 0; }
+.only-selected { align-items: center; white-space: nowrap; font-size: 0.9rem; }
 
 .table { width: 100%; border-collapse: collapse; }
 .table th, .table td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
@@ -189,3 +193,39 @@ input[type='checkbox'], input[type='radio'] { width: auto; }
 .stats strong { font-size: 1.5rem; }
 .stats span { color: var(--muted); font-size: 0.85rem; }
 .warning-text { color: var(--warning); }
+
+/* --- celular y pantallas angostas --- */
+.show-sm { display: none; }
+select, input { min-width: 0; max-width: 100%; } /* un <select> con opciones largas no debe empujar el ancho de la página */
+.tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; }
+.tab { white-space: nowrap; flex: 0 0 auto; }
+.form-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.risk-groups { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+
+@media (max-width: 640px) {
+  .hide-sm { display: none !important; }
+  .show-sm { display: inline; }
+  body { font-size: 15px; }
+  input, select, textarea { font-size: 16px; } /* evita el zoom automático de iOS al enfocar */
+  .app-header { position: static; padding: 8px 12px; gap: 8px; }
+  .brand-mark { width: 30px; height: 30px; }
+  .header-actions { gap: 6px; }
+  .header-actions .btn { padding: 6px 10px; }
+  .container { padding: 14px 10px 48px; }
+  .card { padding: 14px; }
+  .hero { padding: 20px 16px; }
+  h1 { font-size: 1.3rem; }
+  h2 { font-size: 1.1rem; }
+  .page-header { gap: 10px; margin-bottom: 12px; }
+  .page-header .row { width: 100%; }
+  .filters select, .filters input[type='search'] { flex: 1 1 100%; }
+  .scroll-list { max-height: 55vh; padding: 0 8px; }
+  .table th, .table td { padding: 8px 4px; }
+  .kv { grid-template-columns: 1fr; gap: 0 0; }
+  .kv dd { margin-bottom: 6px; }
+  .evidence-row { flex-wrap: wrap; }
+  .thumb { width: calc(50% - 6px); }
+  .status-option { flex: 1 1 calc(50% - 8px); justify-content: center; }
+  .modal, .modal.wide { width: 100vw; max-width: 100vw; max-height: 100dvh; border-radius: 0; margin: 0; }
+  .modal-body { max-height: calc(100dvh - 130px); }
+}

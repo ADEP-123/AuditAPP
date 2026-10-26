@@ -11,16 +11,18 @@ export default function AppHeader({ children, onHome }) {
         <span className="brand-mark" aria-hidden="true">✓</span>
         <div>
           <strong>{t('app.title')}</strong>
-          <small>{t('app.tagline')}</small>
+          <small className="hide-sm">{t('app.tagline')}</small>
         </div>
       </div>
       <div className="header-actions">
         {children}
+        {/* en celular solo se ven el código del idioma y el ícono del tema */}
         <button type="button" className="btn ghost" onClick={toggleLang} aria-label={t('header.langAria')}>
-          {t('header.lang')}
+          <span className="hide-sm">{t('header.lang')}</span>
+          <span className="show-sm" aria-hidden="true">{t('header.lang').slice(0, 2).toUpperCase()}</span>
         </button>
-        <button type="button" className="btn ghost" onClick={toggleTheme}>
-          {theme === 'dark' ? `☀ ${t('header.themeLight')}` : `☾ ${t('header.themeDark')}`}
+        <button type="button" className="btn ghost" onClick={toggleTheme} aria-label={theme === 'dark' ? t('header.themeLight') : t('header.themeDark')}>
+          {theme === 'dark' ? '☀' : '☾'} <span className="hide-sm">{theme === 'dark' ? t('header.themeLight') : t('header.themeDark')}</span>
         </button>
       </div>
     </header>
