@@ -106,6 +106,8 @@ export default {
   'criteria.clearVisible': 'Quitar visibles',
   'criteria.textLanguageNote': 'El texto oficial de este marco está en inglés; se muestra sin traducir para no alterar el requisito.',
   'criteria.confirmRemoveAudited': 'Vas a quitar {n} punto(s) que ya auditaste; se perderá ese resultado. ¿Continuar?',
+  'criteria.onlySelected': 'Solo elegidos ({n})',
+  'criteria.noneVisible': 'No hay puntos con estos filtros.',
   'criteria.customCount': 'Puntos personalizados ({n})',
   'criteria.customCode': 'Código',
   'criteria.customCodeHint': 'Opcional, por ejemplo POL-01.',

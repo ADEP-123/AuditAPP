@@ -17,6 +17,8 @@ export default function CriteriaPage({ processId }) {
   const [fwId, setFwId] = useState(null);
   const [fw, setFw] = useState(null);
   const [filters, setFilters] = useState({ group: '', level: '1', q: '' });
+  // "solo elegidos": se fija la lista al activarlo, así un punto desmarcado por error sigue visible para volver a marcarlo
+  const [pinned, setPinned] = useState(null);
   // clave -> ítem; empieza con lo ya elegido para no perder el avance
   const [selected, setSelected] = useState(() => new Map(process.items.map((i) => [i.key, i])));
   const [showCustom, setShowCustom] = useState(false);
@@ -32,6 +34,7 @@ export default function CriteriaPage({ processId }) {
     if (!fwId) return;
     setFw(null);
     setFilters({ group: '', level: '1', q: '' });
+    setPinned(null);
     frameworksApi.get(fwId).then(setFw);
   }, [fwId]);
 
@@ -41,12 +44,17 @@ export default function CriteriaPage({ processId }) {
     if (!fw) return [];
     const q = filters.q.trim().toLowerCase();
     return fw.items.filter((it) => {
-      if (filters.group && it.group !== filters.group) return false;
-      if (fw.hasLevels && filters.level && it.level > Number(filters.level)) return false;
+      // "solo elegidos" ignora capítulo y nivel: muestra todo lo elegido de este marco para poder quitarlo
+      if (pinned) {
+        if (!pinned.has(`${fw.id}:${it.id}`)) return false;
+      } else {
+        if (filters.group && it.group !== filters.group) return false;
+        if (fw.hasLevels && filters.level && it.level > Number(filters.level)) return false;
+      }
       if (!q) return true;
       return [it.id, loc(it.title, lang), loc(it.text, lang)].join(' ').toLowerCase().includes(q);
     });
-  }, [fw, filters, lang]);
+  }, [fw, filters, lang, pinned]);
 
   const keyOf = (it) => `${fw.id}:${it.id}`;
   const toggle = (it) =>
@@ -81,6 +89,7 @@ export default function CriteriaPage({ processId }) {
   };
 
   const customCount = [...selected.values()].filter((i) => i.custom).length;
+  const selectedInFw = fw ? [...selected.values()].filter((i) => i.frameworkId === fw.id).length : 0;
 
   return (
     <>
@@ -109,22 +118,33 @@ export default function CriteriaPage({ processId }) {
           <>
             <p className="small muted">{loc(fw.description, lang)} · {fw.license}</p>
             <div className="filters">
-              <select value={filters.group} onChange={(e) => setFilters((f) => ({ ...f, group: e.target.value }))} aria-label={t('criteria.group')}>
+              <select disabled={!!pinned} value={filters.group} onChange={(e) => setFilters((f) => ({ ...f, group: e.target.value }))} aria-label={t('criteria.group')}>
                 <option value="">{t('criteria.allGroups')}</option>
                 {fw.groups.map((g) => <option key={g.id} value={g.id}>{g.id} · {loc(g.name, lang)}</option>)}
               </select>
               {fw.hasLevels && (
-                <select value={filters.level} onChange={(e) => setFilters((f) => ({ ...f, level: e.target.value }))} aria-label={t('criteria.level')}>
+                <select disabled={!!pinned} value={filters.level} onChange={(e) => setFilters((f) => ({ ...f, level: e.target.value }))} aria-label={t('criteria.level')}>
                   <option value="1">{t('criteria.levelUpTo', { n: 1 })}</option>
                   <option value="2">{t('criteria.levelUpTo', { n: 2 })}</option>
                   <option value="3">{t('criteria.levelUpTo', { n: 3 })}</option>
                 </select>
               )}
               <input type="search" placeholder={t('criteria.search')} value={filters.q} onChange={(e) => setFilters((f) => ({ ...f, q: e.target.value }))} />
+              <label className="check only-selected">
+                <input
+                  type="checkbox"
+                  checked={!!pinned}
+                  onChange={(e) => setPinned(e.target.checked ? new Set([...selected.keys()].filter((k) => k.startsWith(`${fw.id}:`))) : null)}
+                />
+                <span>{t('criteria.onlySelected', { n: selectedInFw })}</span>
+              </label>
               <button type="button" className="btn ghost small" onClick={() => setVisible(true)}>{t('criteria.selectVisible', { n: visible.length })}</button>
               <button type="button" className="btn ghost small" onClick={() => setVisible(false)}>{t('criteria.clearVisible')}</button>
             </div>
             {fw.textLanguages.length > 0 && !fw.textLanguages.includes(lang) && <p className="small muted">{t('criteria.textLanguageNote')}</p>}
+            {/* scroll interno: pestañas y filtros quedan siempre a la vista */}
+            <div className="scroll-list">
+            {visible.length === 0 && <p className="muted small empty">{t('criteria.noneVisible')}</p>}
             <ul className="checklist">
               {visible.map((it) => (
                 <li key={it.id}>
@@ -141,6 +161,7 @@ export default function CriteriaPage({ processId }) {
                 </li>
               ))}
             </ul>
+            </div>
           </>
         )}
       </section>

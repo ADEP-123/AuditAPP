@@ -88,6 +88,7 @@ a { color: var(--primary); }
 .badge {
   display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 0.8rem;
   border: 1px solid currentColor;
+  white-space: nowrap; /* "No aplica" en dos líneas se veía roto */
 }
 .badge.success { color: var(--success); }
 .badge.danger { color: var(--danger); }
@@ -139,6 +140,9 @@ input[type='checkbox'], input[type='radio'] { width: auto; }
 .checklist { list-style: none; margin: 0; padding: 0; }
 .checklist li { padding: 10px 4px; border-bottom: 1px solid var(--border); }
 .checklist .badge { margin-left: 6px; }
+.scroll-list { max-height: min(60vh, 640px); overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--border); border-radius: 8px; padding: 0 10px; }
+.scroll-list .empty { padding: 12px 0; }
+.only-selected { align-items: center; white-space: nowrap; font-size: 0.9rem; }
 
 .table { width: 100%; border-collapse: collapse; }
 .table th, .table td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
