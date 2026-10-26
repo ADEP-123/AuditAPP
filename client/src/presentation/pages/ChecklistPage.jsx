@@ -44,7 +44,7 @@ export default function ChecklistPage({ processId }) {
                 <th>{t('checklist.id')}</th>
                 <th>{t('checklist.item')}</th>
                 <th>{t('checklist.status')}</th>
-                <th>{t('checklist.time')}</th>
+                <th className="hide-sm">{t('checklist.time')}</th>
               </tr>
             </thead>
             <tbody>
@@ -59,7 +59,7 @@ export default function ChecklistPage({ processId }) {
                     <StatusBadge status={it.status} />
                     {it.finding && <span className="block"><SeverityBadge severity={rateRisk(it.finding.risk)?.severity} /></span>}
                   </td>
-                  <td className="small">{it.timeSpentMs ? formatDuration(it.timeSpentMs) : '—'}</td>
+                  <td className="small hide-sm">{it.timeSpentMs ? formatDuration(it.timeSpentMs) : '—'}</td>
                 </tr>
               ))}
             </tbody>

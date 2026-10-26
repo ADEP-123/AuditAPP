@@ -23,8 +23,8 @@ export default function SaveFileButton() {
   };
 
   return (
-    <button type="button" className="btn ghost" onClick={save} disabled={busy} title={t('file.saveHint')}>
-      💾 {busy ? '…' : t('file.save')}
+    <button type="button" className="btn ghost" onClick={save} disabled={busy} title={t('file.saveHint')} aria-label={t('file.save')}>
+      💾 <span className="hide-sm">{busy ? '…' : t('file.save')}</span>
     </button>
   );
 }
