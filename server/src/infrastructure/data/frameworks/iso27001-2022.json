@@ -1,0 +1,1226 @@
+{
+ "id": "iso27001-2022",
+ "version": "2022",
+ "name": {
+  "es": "ISO/IEC 27001:2022 – Anexo A",
+  "en": "ISO/IEC 27001:2022 – Annex A"
+ },
+ "description": {
+  "es": "93 controles de seguridad de la información en cuatro temas. Solo se incluyen número y nombre; el texto completo está en la norma.",
+  "en": "93 information security controls in four themes. Only number and name are included; the full text is in the standard."
+ },
+ "publisher": "ISO/IEC",
+ "license": "Títulos de referencia; texto de la norma con derechos de autor / Reference titles; standard text is copyrighted",
+ "source": "https://www.iso.org/standard/27001",
+ "textLanguages": [],
+ "hasLevels": false,
+ "groups": [
+  {
+   "id": "5",
+   "name": {
+    "es": "Controles organizacionales",
+    "en": "Organizational controls"
+   }
+  },
+  {
+   "id": "6",
+   "name": {
+    "es": "Controles de personas",
+    "en": "People controls"
+   }
+  },
+  {
+   "id": "7",
+   "name": {
+    "es": "Controles físicos",
+    "en": "Physical controls"
+   }
+  },
+  {
+   "id": "8",
+   "name": {
+    "es": "Controles tecnológicos",
+    "en": "Technological controls"
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "5.1",
+   "group": "5",
+   "title": {
+    "es": "Políticas de seguridad de la información",
+    "en": "Policies for information security"
+   }
+  },
+  {
+   "id": "5.2",
+   "group": "5",
+   "title": {
+    "es": "Roles y responsabilidades de seguridad de la información",
+    "en": "Information security roles and responsibilities"
+   }
+  },
+  {
+   "id": "5.3",
+   "group": "5",
+   "title": {
+    "es": "Segregación de funciones",
+    "en": "Segregation of duties"
+   }
+  },
+  {
+   "id": "5.4",
+   "group": "5",
+   "title": {
+    "es": "Responsabilidades de la dirección",
+    "en": "Management responsibilities"
+   }
+  },
+  {
+   "id": "5.5",
+   "group": "5",
+   "title": {
+    "es": "Contacto con las autoridades",
+    "en": "Contact with authorities"
+   }
+  },
+  {
+   "id": "5.6",
+   "group": "5",
+   "title": {
+    "es": "Contacto con grupos de interés especial",
+    "en": "Contact with special interest groups"
+   }
+  },
+  {
+   "id": "5.7",
+   "group": "5",
+   "title": {
+    "es": "Inteligencia de amenazas",
+    "en": "Threat intelligence"
+   }
+  },
+  {
+   "id": "5.8",
+   "group": "5",
+   "title": {
+    "es": "Seguridad de la información en la gestión de proyectos",
+    "en": "Information security in project management"
+   }
+  },
+  {
+   "id": "5.9",
+   "group": "5",
+   "title": {
+    "es": "Inventario de información y otros activos asociados",
+    "en": "Inventory of information and other associated assets"
+   }
+  },
+  {
+   "id": "5.10",
+   "group": "5",
+   "title": {
+    "es": "Uso aceptable de la información y otros activos asociados",
+    "en": "Acceptable use of information and other associated assets"
+   }
+  },
+  {
+   "id": "5.11",
+   "group": "5",
+   "title": {
+    "es": "Devolución de activos",
+    "en": "Return of assets"
+   }
+  },
+  {
+   "id": "5.12",
+   "group": "5",
+   "title": {
+    "es": "Clasificación de la información",
+    "en": "Classification of information"
+   }
+  },
+  {
+   "id": "5.13",
+   "group": "5",
+   "title": {
+    "es": "Etiquetado de la información",
+    "en": "Labelling of information"
+   }
+  },
+  {
+   "id": "5.14",
+   "group": "5",
+   "title": {
+    "es": "Transferencia de información",
+    "en": "Information transfer"
+   }
+  },
+  {
+   "id": "5.15",
+   "group": "5",
+   "title": {
+    "es": "Control de acceso",
+    "en": "Access control"
+   },
+   "guidanceKey": "5.15"
+  },
+  {
+   "id": "5.16",
+   "group": "5",
+   "title": {
+    "es": "Gestión de identidades",
+    "en": "Identity management"
+   }
+  },
+  {
+   "id": "5.17",
+   "group": "5",
+   "title": {
+    "es": "Información de autenticación",
+    "en": "Authentication information"
+   },
+   "guidanceKey": "5.17"
+  },
+  {
+   "id": "5.18",
+   "group": "5",
+   "title": {
+    "es": "Derechos de acceso",
+    "en": "Access rights"
+   }
+  },
+  {
+   "id": "5.19",
+   "group": "5",
+   "title": {
+    "es": "Seguridad de la información en las relaciones con proveedores",
+    "en": "Information security in supplier relationships"
+   }
+  },
+  {
+   "id": "5.20",
+   "group": "5",
+   "title": {
+    "es": "Seguridad de la información en los acuerdos con proveedores",
+    "en": "Addressing information security within supplier agreements"
+   }
+  },
+  {
+   "id": "5.21",
+   "group": "5",
+   "title": {
+    "es": "Gestión de la seguridad de la información en la cadena de suministro de TIC",
+    "en": "Managing information security in the ICT supply chain"
+   }
+  },
+  {
+   "id": "5.22",
+   "group": "5",
+   "title": {
+    "es": "Seguimiento, revisión y gestión de cambios de los servicios de proveedores",
+    "en": "Monitoring, review and change management of supplier services"
+   }
+  },
+  {
+   "id": "5.23",
+   "group": "5",
+   "title": {
+    "es": "Seguridad de la información en el uso de servicios en la nube",
+    "en": "Information security for use of cloud services"
+   }
+  },
+  {
+   "id": "5.24",
+   "group": "5",
+   "title": {
+    "es": "Planificación y preparación de la gestión de incidentes",
+    "en": "Information security incident management planning and preparation"
+   }
+  },
+  {
+   "id": "5.25",
+   "group": "5",
+   "title": {
+    "es": "Evaluación y decisión sobre eventos de seguridad de la información",
+    "en": "Assessment and decision on information security events"
+   }
+  },
+  {
+   "id": "5.26",
+   "group": "5",
+   "title": {
+    "es": "Respuesta a incidentes de seguridad de la información",
+    "en": "Response to information security incidents"
+   }
+  },
+  {
+   "id": "5.27",
+   "group": "5",
+   "title": {
+    "es": "Aprendizaje de los incidentes de seguridad de la información",
+    "en": "Learning from information security incidents"
+   }
+  },
+  {
+   "id": "5.28",
+   "group": "5",
+   "title": {
+    "es": "Recopilación de evidencias",
+    "en": "Collection of evidence"
+   }
+  },
+  {
+   "id": "5.29",
+   "group": "5",
+   "title": {
+    "es": "Seguridad de la información durante una interrupción",
+    "en": "Information security during disruption"
+   }
+  },
+  {
+   "id": "5.30",
+   "group": "5",
+   "title": {
+    "es": "Preparación de las TIC para la continuidad del negocio",
+    "en": "ICT readiness for business continuity"
+   }
+  },
+  {
+   "id": "5.31",
+   "group": "5",
+   "title": {
+    "es": "Requisitos legales, estatutarios, reglamentarios y contractuales",
+    "en": "Legal, statutory, regulatory and contractual requirements"
+   }
+  },
+  {
+   "id": "5.32",
+   "group": "5",
+   "title": {
+    "es": "Derechos de propiedad intelectual",
+    "en": "Intellectual property rights"
+   }
+  },
+  {
+   "id": "5.33",
+   "group": "5",
+   "title": {
+    "es": "Protección de registros",
+    "en": "Protection of records"
+   }
+  },
+  {
+   "id": "5.34",
+   "group": "5",
+   "title": {
+    "es": "Privacidad y protección de datos personales",
+    "en": "Privacy and protection of PII"
+   }
+  },
+  {
+   "id": "5.35",
+   "group": "5",
+   "title": {
+    "es": "Revisión independiente de la seguridad de la información",
+    "en": "Independent review of information security"
+   }
+  },
+  {
+   "id": "5.36",
+   "group": "5",
+   "title": {
+    "es": "Cumplimiento de políticas, reglas y normas de seguridad de la información",
+    "en": "Compliance with policies, rules and standards for information security"
+   }
+  },
+  {
+   "id": "5.37",
+   "group": "5",
+   "title": {
+    "es": "Procedimientos operativos documentados",
+    "en": "Documented operating procedures"
+   }
+  },
+  {
+   "id": "6.1",
+   "group": "6",
+   "title": {
+    "es": "Verificación de antecedentes",
+    "en": "Screening"
+   }
+  },
+  {
+   "id": "6.2",
+   "group": "6",
+   "title": {
+    "es": "Términos y condiciones del empleo",
+    "en": "Terms and conditions of employment"
+   }
+  },
+  {
+   "id": "6.3",
+   "group": "6",
+   "title": {
+    "es": "Concienciación, educación y formación en seguridad de la información",
+    "en": "Information security awareness, education and training"
+   }
+  },
+  {
+   "id": "6.4",
+   "group": "6",
+   "title": {
+    "es": "Proceso disciplinario",
+    "en": "Disciplinary process"
+   }
+  },
+  {
+   "id": "6.5",
+   "group": "6",
+   "title": {
+    "es": "Responsabilidades tras la terminación o el cambio de empleo",
+    "en": "Responsibilities after termination or change of employment"
+   }
+  },
+  {
+   "id": "6.6",
+   "group": "6",
+   "title": {
+    "es": "Acuerdos de confidencialidad o no divulgación",
+    "en": "Confidentiality or non-disclosure agreements"
+   }
+  },
+  {
+   "id": "6.7",
+   "group": "6",
+   "title": {
+    "es": "Trabajo remoto",
+    "en": "Remote working"
+   }
+  },
+  {
+   "id": "6.8",
+   "group": "6",
+   "title": {
+    "es": "Reporte de eventos de seguridad de la información",
+    "en": "Information security event reporting"
+   }
+  },
+  {
+   "id": "7.1",
+   "group": "7",
+   "title": {
+    "es": "Perímetros de seguridad física",
+    "en": "Physical security perimeters"
+   }
+  },
+  {
+   "id": "7.2",
+   "group": "7",
+   "title": {
+    "es": "Controles físicos de entrada",
+    "en": "Physical entry"
+   }
+  },
+  {
+   "id": "7.3",
+   "group": "7",
+   "title": {
+    "es": "Seguridad de oficinas, recintos e instalaciones",
+    "en": "Securing offices, rooms and facilities"
+   }
+  },
+  {
+   "id": "7.4",
+   "group": "7",
+   "title": {
+    "es": "Monitoreo de la seguridad física",
+    "en": "Physical security monitoring"
+   }
+  },
+  {
+   "id": "7.5",
+   "group": "7",
+   "title": {
+    "es": "Protección contra amenazas físicas y ambientales",
+    "en": "Protecting against physical and environmental threats"
+   }
+  },
+  {
+   "id": "7.6",
+   "group": "7",
+   "title": {
+    "es": "Trabajo en áreas seguras",
+    "en": "Working in secure areas"
+   }
+  },
+  {
+   "id": "7.7",
+   "group": "7",
+   "title": {
+    "es": "Escritorio limpio y pantalla limpia",
+    "en": "Clear desk and clear screen"
+   }
+  },
+  {
+   "id": "7.8",
+   "group": "7",
+   "title": {
+    "es": "Ubicación y protección de los equipos",
+    "en": "Equipment siting and protection"
+   }
+  },
+  {
+   "id": "7.9",
+   "group": "7",
+   "title": {
+    "es": "Seguridad de los activos fuera de las instalaciones",
+    "en": "Security of assets off-premises"
+   }
+  },
+  {
+   "id": "7.10",
+   "group": "7",
+   "title": {
+    "es": "Medios de almacenamiento",
+    "en": "Storage media"
+   }
+  },
+  {
+   "id": "7.11",
+   "group": "7",
+   "title": {
+    "es": "Servicios de suministro",
+    "en": "Supporting utilities"
+   }
+  },
+  {
+   "id": "7.12",
+   "group": "7",
+   "title": {
+    "es": "Seguridad del cableado",
+    "en": "Cabling security"
+   }
+  },
+  {
+   "id": "7.13",
+   "group": "7",
+   "title": {
+    "es": "Mantenimiento de los equipos",
+    "en": "Equipment maintenance"
+   }
+  },
+  {
+   "id": "7.14",
+   "group": "7",
+   "title": {
+    "es": "Eliminación o reutilización segura de los equipos",
+    "en": "Secure disposal or re-use of equipment"
+   }
+  },
+  {
+   "id": "8.1",
+   "group": "8",
+   "title": {
+    "es": "Dispositivos de usuario final",
+    "en": "User end point devices"
+   }
+  },
+  {
+   "id": "8.2",
+   "group": "8",
+   "title": {
+    "es": "Derechos de acceso privilegiado",
+    "en": "Privileged access rights"
+   },
+   "guidanceKey": "8.2"
+  },
+  {
+   "id": "8.3",
+   "group": "8",
+   "title": {
+    "es": "Restricción del acceso a la información",
+    "en": "Information access restriction"
+   },
+   "guidanceKey": "8.3"
+  },
+  {
+   "id": "8.4",
+   "group": "8",
+   "title": {
+    "es": "Acceso al código fuente",
+    "en": "Access to source code"
+   }
+  },
+  {
+   "id": "8.5",
+   "group": "8",
+   "title": {
+    "es": "Autenticación segura",
+    "en": "Secure authentication"
+   },
+   "guidanceKey": "8.5"
+  },
+  {
+   "id": "8.6",
+   "group": "8",
+   "title": {
+    "es": "Gestión de la capacidad",
+    "en": "Capacity management"
+   }
+  },
+  {
+   "id": "8.7",
+   "group": "8",
+   "title": {
+    "es": "Protección contra el malware",
+    "en": "Protection against malware"
+   }
+  },
+  {
+   "id": "8.8",
+   "group": "8",
+   "title": {
+    "es": "Gestión de vulnerabilidades técnicas",
+    "en": "Management of technical vulnerabilities"
+   },
+   "guidanceKey": "8.8"
+  },
+  {
+   "id": "8.9",
+   "group": "8",
+   "title": {
+    "es": "Gestión de la configuración",
+    "en": "Configuration management"
+   }
+  },
+  {
+   "id": "8.10",
+   "group": "8",
+   "title": {
+    "es": "Eliminación de información",
+    "en": "Information deletion"
+   }
+  },
+  {
+   "id": "8.11",
+   "group": "8",
+   "title": {
+    "es": "Enmascaramiento de datos",
+    "en": "Data masking"
+   }
+  },
+  {
+   "id": "8.12",
+   "group": "8",
+   "title": {
+    "es": "Prevención de fuga de datos",
+    "en": "Data leakage prevention"
+   }
+  },
+  {
+   "id": "8.13",
+   "group": "8",
+   "title": {
+    "es": "Copias de respaldo de la información",
+    "en": "Information backup"
+   }
+  },
+  {
+   "id": "8.14",
+   "group": "8",
+   "title": {
+    "es": "Redundancia de las instalaciones de procesamiento de información",
+    "en": "Redundancy of information processing facilities"
+   }
+  },
+  {
+   "id": "8.15",
+   "group": "8",
+   "title": {
+    "es": "Registro de eventos",
+    "en": "Logging"
+   }
+  },
+  {
+   "id": "8.16",
+   "group": "8",
+   "title": {
+    "es": "Actividades de monitoreo",
+    "en": "Monitoring activities"
+   }
+  },
+  {
+   "id": "8.17",
+   "group": "8",
+   "title": {
+    "es": "Sincronización de relojes",
+    "en": "Clock synchronization"
+   }
+  },
+  {
+   "id": "8.18",
+   "group": "8",
+   "title": {
+    "es": "Uso de programas utilitarios privilegiados",
+    "en": "Use of privileged utility programs"
+   }
+  },
+  {
+   "id": "8.19",
+   "group": "8",
+   "title": {
+    "es": "Instalación de software en sistemas operativos",
+    "en": "Installation of software on operational systems"
+   }
+  },
+  {
+   "id": "8.20",
+   "group": "8",
+   "title": {
+    "es": "Seguridad de las redes",
+    "en": "Networks security"
+   }
+  },
+  {
+   "id": "8.21",
+   "group": "8",
+   "title": {
+    "es": "Seguridad de los servicios de red",
+    "en": "Security of network services"
+   }
+  },
+  {
+   "id": "8.22",
+   "group": "8",
+   "title": {
+    "es": "Segregación de redes",
+    "en": "Segregation of networks"
+   }
+  },
+  {
+   "id": "8.23",
+   "group": "8",
+   "title": {
+    "es": "Filtrado web",
+    "en": "Web filtering"
+   }
+  },
+  {
+   "id": "8.24",
+   "group": "8",
+   "title": {
+    "es": "Uso de criptografía",
+    "en": "Use of cryptography"
+   },
+   "guidanceKey": "8.24"
+  },
+  {
+   "id": "8.25",
+   "group": "8",
+   "title": {
+    "es": "Ciclo de vida de desarrollo seguro",
+    "en": "Secure development life cycle"
+   }
+  },
+  {
+   "id": "8.26",
+   "group": "8",
+   "title": {
+    "es": "Requisitos de seguridad de las aplicaciones",
+    "en": "Application security requirements"
+   },
+   "guidanceKey": "8.26"
+  },
+  {
+   "id": "8.27",
+   "group": "8",
+   "title": {
+    "es": "Principios de arquitectura e ingeniería de sistemas seguros",
+    "en": "Secure system architecture and engineering principles"
+   }
+  },
+  {
+   "id": "8.28",
+   "group": "8",
+   "title": {
+    "es": "Codificación segura",
+    "en": "Secure coding"
+   },
+   "guidanceKey": "8.28"
+  },
+  {
+   "id": "8.29",
+   "group": "8",
+   "title": {
+    "es": "Pruebas de seguridad en el desarrollo y la aceptación",
+    "en": "Security testing in development and acceptance"
+   },
+   "guidanceKey": "8.29"
+  },
+  {
+   "id": "8.30",
+   "group": "8",
+   "title": {
+    "es": "Desarrollo externalizado",
+    "en": "Outsourced development"
+   }
+  },
+  {
+   "id": "8.31",
+   "group": "8",
+   "title": {
+    "es": "Separación de los entornos de desarrollo, prueba y producción",
+    "en": "Separation of development, test and production environments"
+   }
+  },
+  {
+   "id": "8.32",
+   "group": "8",
+   "title": {
+    "es": "Gestión de cambios",
+    "en": "Change management"
+   }
+  },
+  {
+   "id": "8.33",
+   "group": "8",
+   "title": {
+    "es": "Información de prueba",
+    "en": "Test information"
+   }
+  },
+  {
+   "id": "8.34",
+   "group": "8",
+   "title": {
+    "es": "Protección de los sistemas de información durante las pruebas de auditoría",
+    "en": "Protection of information systems during audit testing"
+   }
+  }
+ ],
+ "guidance": {
+  "5": {
+   "tests": [
+    "Revisión documental / Document review",
+    "Entrevista / Interview"
+   ],
+   "es": {
+    "how": [
+     "Solicita la política o el procedimiento documentado que exige el control y verifica que esté aprobado y vigente.",
+     "Comprueba con registros o entrevistas que el control se aplica en el proceso auditado, no solo que está escrito.",
+     "Anota quién es el responsable del control y con qué frecuencia se revisa."
+    ],
+    "evidence": [
+     "Documento de la política o procedimiento",
+     "Registros de aplicación (actas, tickets, reportes)"
+    ]
+   },
+   "en": {
+    "how": [
+     "Request the documented policy or procedure required by the control and check that it is approved and current.",
+     "Check with records or interviews that the control is applied in the audited process, not just written down.",
+     "Note who owns the control and how often it is reviewed."
+    ],
+    "evidence": [
+     "Policy or procedure document",
+     "Application records (minutes, tickets, reports)"
+    ]
+   }
+  },
+  "6": {
+   "tests": [
+    "Revisión documental / Document review",
+    "Muestreo / Sampling"
+   ],
+   "es": {
+    "how": [
+     "Revisa contratos, acuerdos de confidencialidad y registros de capacitación del personal que participa en el proceso.",
+     "Verifica cómo se manejan el ingreso, el cambio de cargo y el retiro de ese personal.",
+     "Confirma con una muestra de personas que los registros corresponden a la realidad."
+    ],
+    "evidence": [
+     "Contratos o acuerdos firmados (muestra)",
+     "Registros de capacitación"
+    ]
+   },
+   "en": {
+    "how": [
+     "Review contracts, confidentiality agreements and training records of the staff involved in the process.",
+     "Check how onboarding, role changes and offboarding of that staff are handled.",
+     "Confirm with a sample of people that the records match reality."
+    ],
+    "evidence": [
+     "Signed contracts or agreements (sample)",
+     "Training records"
+    ]
+   }
+  },
+  "7": {
+   "tests": [
+    "Inspección / Inspection"
+   ],
+   "es": {
+    "how": [
+     "Verifica en sitio, o con fotografías y registros, las medidas físicas: control de ingreso, protección de equipos y escritorio limpio.",
+     "En un entorno de laboratorio o en la nube, justifica si el control no aplica o si lo cubre el proveedor."
+    ],
+    "evidence": [
+     "Fotografías o registros de ingreso",
+     "Justificación de No aplica"
+    ]
+   },
+   "en": {
+    "how": [
+     "Verify on site, or with photos and records, the physical measures: entry control, equipment protection and clear desk.",
+     "In a lab or cloud environment, justify whether the control does not apply or is covered by the provider."
+    ],
+    "evidence": [
+     "Photos or entry logs",
+     "Not applicable justification"
+    ]
+   }
+  },
+  "8": {
+   "tests": [
+    "Revisión de configuración / Configuration review",
+    "WSTG-CONF"
+   ],
+   "es": {
+    "how": [
+     "Revisa la configuración técnica del sistema relacionada con el control.",
+     "Pide evidencia de que funciona: capturas de configuración, reportes de herramientas o registros del sistema.",
+     "Cuando aplique, prueba el control directamente sobre la aplicación con ZAP o revisando el código."
+    ],
+    "evidence": [
+     "Captura de la configuración",
+     "Reporte de la herramienta o registro del sistema"
+    ]
+   },
+   "en": {
+    "how": [
+     "Review the system's technical configuration related to the control.",
+     "Ask for evidence that it works: configuration screenshots, tool reports or system logs.",
+     "Where applicable, test the control directly on the application with ZAP or by reviewing the code."
+    ],
+    "evidence": [
+     "Configuration screenshot",
+     "Tool report or system log"
+    ]
+   }
+  },
+  "5.15": {
+   "tests": [
+    "WSTG-ATHZ"
+   ],
+   "es": {
+    "how": [
+     "Arma una matriz de roles y permisos: qué puede hacer cada rol en cada función.",
+     "Con dos cuentas de prueba de distinto rol, intenta acceder a recursos del otro usuario o a funciones de un rol superior.",
+     "Revisa en el código si cada ruta verifica permisos en el servidor."
+    ],
+    "evidence": [
+     "Matriz de roles y permisos",
+     "Petición de un usuario a un recurso ajeno y su respuesta"
+    ]
+   },
+   "en": {
+    "how": [
+     "Build a role and permission matrix: what each role can do in each function.",
+     "With two test accounts of different roles, try to access the other user's resources or higher-role functions.",
+     "Check in the code whether every route enforces permissions on the server."
+    ],
+    "evidence": [
+     "Role and permission matrix",
+     "A user's request to someone else's resource and the response"
+    ]
+   },
+   "related": [
+    "V8"
+   ]
+  },
+  "5.17": {
+   "tests": [
+    "WSTG-ATHN",
+    "WSTG-IDNT"
+   ],
+   "es": {
+    "how": [
+     "Revisa la política de contraseñas: longitud mínima, verificación contra contraseñas comunes y límite de intentos fallidos.",
+     "Prueba el registro, el inicio de sesión y la recuperación de contraseña, y observa mensajes de error y bloqueos.",
+     "Revisa en el código cómo se guardan las contraseñas (algoritmo de hash y sal).",
+     "Verifica si las cuentas privilegiadas tienen autenticación multifactor."
+    ],
+    "evidence": [
+     "Captura de los mensajes del inicio de sesión",
+     "Fragmento del código que guarda las contraseñas"
+    ]
+   },
+   "en": {
+    "how": [
+     "Review the password policy: minimum length, check against common passwords and failed-attempt limits.",
+     "Test sign-up, login and password recovery, and observe error messages and lockouts.",
+     "Check in the code how passwords are stored (hash algorithm and salt).",
+     "Check whether privileged accounts use multi-factor authentication."
+    ],
+    "evidence": [
+     "Screenshot of login messages",
+     "Code snippet that stores passwords"
+    ]
+   },
+   "related": [
+    "V6"
+   ]
+  },
+  "8.2": {
+   "tests": [
+    "WSTG-ATHZ"
+   ],
+   "es": {
+    "how": [
+     "Arma una matriz de roles y permisos: qué puede hacer cada rol en cada función.",
+     "Con dos cuentas de prueba de distinto rol, intenta acceder a recursos del otro usuario o a funciones de un rol superior.",
+     "Revisa en el código si cada ruta verifica permisos en el servidor."
+    ],
+    "evidence": [
+     "Matriz de roles y permisos",
+     "Petición de un usuario a un recurso ajeno y su respuesta"
+    ]
+   },
+   "en": {
+    "how": [
+     "Build a role and permission matrix: what each role can do in each function.",
+     "With two test accounts of different roles, try to access the other user's resources or higher-role functions.",
+     "Check in the code whether every route enforces permissions on the server."
+    ],
+    "evidence": [
+     "Role and permission matrix",
+     "A user's request to someone else's resource and the response"
+    ]
+   },
+   "related": [
+    "V8"
+   ]
+  },
+  "8.3": {
+   "tests": [
+    "WSTG-ATHZ"
+   ],
+   "es": {
+    "how": [
+     "Arma una matriz de roles y permisos: qué puede hacer cada rol en cada función.",
+     "Con dos cuentas de prueba de distinto rol, intenta acceder a recursos del otro usuario o a funciones de un rol superior.",
+     "Revisa en el código si cada ruta verifica permisos en el servidor."
+    ],
+    "evidence": [
+     "Matriz de roles y permisos",
+     "Petición de un usuario a un recurso ajeno y su respuesta"
+    ]
+   },
+   "en": {
+    "how": [
+     "Build a role and permission matrix: what each role can do in each function.",
+     "With two test accounts of different roles, try to access the other user's resources or higher-role functions.",
+     "Check in the code whether every route enforces permissions on the server."
+    ],
+    "evidence": [
+     "Role and permission matrix",
+     "A user's request to someone else's resource and the response"
+    ]
+   },
+   "related": [
+    "V8"
+   ]
+  },
+  "8.5": {
+   "tests": [
+    "WSTG-ATHN",
+    "WSTG-IDNT"
+   ],
+   "es": {
+    "how": [
+     "Revisa la política de contraseñas: longitud mínima, verificación contra contraseñas comunes y límite de intentos fallidos.",
+     "Prueba el registro, el inicio de sesión y la recuperación de contraseña, y observa mensajes de error y bloqueos.",
+     "Revisa en el código cómo se guardan las contraseñas (algoritmo de hash y sal).",
+     "Verifica si las cuentas privilegiadas tienen autenticación multifactor."
+    ],
+    "evidence": [
+     "Captura de los mensajes del inicio de sesión",
+     "Fragmento del código que guarda las contraseñas"
+    ]
+   },
+   "en": {
+    "how": [
+     "Review the password policy: minimum length, check against common passwords and failed-attempt limits.",
+     "Test sign-up, login and password recovery, and observe error messages and lockouts.",
+     "Check in the code how passwords are stored (hash algorithm and salt).",
+     "Check whether privileged accounts use multi-factor authentication."
+    ],
+    "evidence": [
+     "Screenshot of login messages",
+     "Code snippet that stores passwords"
+    ]
+   },
+   "related": [
+    "V6"
+   ]
+  },
+  "8.8": {
+   "tests": [
+    "SAST",
+    "SCA"
+   ],
+   "es": {
+    "how": [
+     "Revisa el inventario de dependencias y sus vulnerabilidades conocidas (por ejemplo con npm audit u OWASP Dependency-Check).",
+     "Verifica la separación de responsabilidades en la arquitectura y el manejo de operaciones concurrentes críticas.",
+     "Revisa el código de las funciones críticas del proceso."
+    ],
+    "evidence": [
+     "Reporte de dependencias vulnerables",
+     "Fragmento de código revisado"
+    ]
+   },
+   "en": {
+    "how": [
+     "Review the dependency inventory and its known vulnerabilities (for example with npm audit or OWASP Dependency-Check).",
+     "Check separation of concerns in the architecture and the handling of critical concurrent operations.",
+     "Review the code of the process's critical functions."
+    ],
+    "evidence": [
+     "Vulnerable dependency report",
+     "Reviewed code snippet"
+    ]
+   },
+   "related": [
+    "V15"
+   ]
+  },
+  "8.24": {
+   "tests": [
+    "WSTG-CRYP"
+   ],
+   "es": {
+    "how": [
+     "Haz un inventario de dónde se usa criptografía: contraseñas, datos guardados, tokens y comunicaciones.",
+     "Verifica que los algoritmos sean vigentes y que las llaves no estén en el código fuente.",
+     "Revisa cómo se generan los valores aleatorios de tokens y llaves."
+    ],
+    "evidence": [
+     "Fragmento de código con el algoritmo usado",
+     "Ubicación de llaves y secretos"
+    ]
+   },
+   "en": {
+    "how": [
+     "Inventory where cryptography is used: passwords, stored data, tokens and communications.",
+     "Check that algorithms are current and that keys are not in the source code.",
+     "Review how random values for tokens and keys are generated."
+    ],
+    "evidence": [
+     "Code snippet showing the algorithm used",
+     "Location of keys and secrets"
+    ]
+   },
+   "related": [
+    "V11"
+   ]
+  },
+  "8.26": {
+   "tests": [
+    "WSTG-INPV",
+    "WSTG-BUSL"
+   ],
+   "es": {
+    "how": [
+     "Lista las reglas de negocio del proceso (cantidades, precios, estados de un pedido, límites por usuario).",
+     "Verifica que el servidor valide tipo, rango y formato de cada dato, sin depender de las validaciones del navegador.",
+     "Con el proxy de ZAP, recorre el flujo en un orden distinto al previsto o con valores fuera de rango y observa si el servidor lo rechaza."
+    ],
+    "evidence": [
+     "Petición modificada y respuesta del servidor",
+     "Regla de validación en el código del servidor"
+    ]
+   },
+   "en": {
+    "how": [
+     "List the business rules of the process (quantities, prices, order states, per-user limits).",
+     "Check that the server validates type, range and format of every input, without relying on browser-side validation.",
+     "Using the ZAP proxy, walk the flow in an unexpected order or with out-of-range values and see whether the server rejects it."
+    ],
+    "evidence": [
+     "Modified request and server response",
+     "Validation rule in the server code"
+    ]
+   },
+   "related": [
+    "V2"
+   ]
+  },
+  "8.28": {
+   "tests": [
+    "WSTG-INPV",
+    "WSTG-CLNT"
+   ],
+   "es": {
+    "how": [
+     "Identifica dónde la aplicación recibe datos del usuario (formularios, parámetros de URL, cabeceras, API) y dónde los muestra o los pasa a un intérprete (SQL, HTML, comandos).",
+     "Revisa en el código si la salida se codifica según el contexto y si las consultas usan parámetros en lugar de concatenar texto.",
+     "Ejecuta un escaneo activo con ZAP sobre esos puntos y confirma a mano cada alerta antes de registrarla."
+    ],
+    "evidence": [
+     "Reporte de ZAP con las alertas confirmadas",
+     "Fragmento del código donde se arma la consulta o la salida",
+     "Captura de la respuesta de la aplicación"
+    ]
+   },
+   "en": {
+    "how": [
+     "Identify where the application receives user data (forms, URL parameters, headers, API) and where it displays it or passes it to an interpreter (SQL, HTML, commands).",
+     "Check in the code whether output is encoded for its context and whether queries use parameters instead of string concatenation.",
+     "Run a ZAP active scan on those points and manually confirm each alert before recording it."
+    ],
+    "evidence": [
+     "ZAP report with confirmed alerts",
+     "Code snippet where the query or output is built",
+     "Screenshot of the application response"
+    ]
+   },
+   "related": [
+    "V1"
+   ]
+  },
+  "8.29": {
+   "tests": [
+    "WSTG-CONF",
+    "WSTG-INFO"
+   ],
+   "es": {
+    "how": [
+     "Revisa la configuración del servidor y del framework: modo de depuración, listado de directorios y archivos de respaldo expuestos.",
+     "Verifica que los secretos estén fuera del código fuente.",
+     "Usa ZAP para buscar archivos y rutas expuestos por error."
+    ],
+    "evidence": [
+     "Archivo de configuración revisado",
+     "Alertas de ZAP sobre archivos expuestos"
+    ]
+   },
+   "en": {
+    "how": [
+     "Review the server and framework configuration: debug mode, directory listing and exposed backup files.",
+     "Check that secrets are kept out of the source code.",
+     "Use ZAP to look for files and paths exposed by mistake."
+    ],
+    "evidence": [
+     "Reviewed configuration file",
+     "ZAP alerts about exposed files"
+    ]
+   },
+   "related": [
+    "V13"
+   ]
+  }
+ }
+}

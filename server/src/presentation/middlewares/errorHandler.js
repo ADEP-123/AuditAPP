@@ -6,7 +6,5 @@ export function notFound(req, res) {
 export function errorHandler(err, req, res, next) {
   const status = err.status || err.statusCode || 500;
   if (status >= 500) console.error(err);
-  // los errores del parser JSON no deben exponer detalles internos
-  const message = status >= 500 ? 'Internal server error' : err.type === 'entity.parse.failed' ? 'Invalid JSON' : err.message;
-  res.status(status).json({ error: message });
+  res.status(status).json({ error: status >= 500 ? 'Internal server error' : err.message });
 }
