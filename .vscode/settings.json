@@ -1,3 +1,11 @@
 {
-  "conventionalCommits.scopes": ["server", "client", "data"]
+  "conventionalCommits.scopes": [
+    "server",
+    "client",
+    "data",
+    "domain",
+    "infra",
+    "app",
+    "ui"
+  ]
 }
