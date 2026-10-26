@@ -11,6 +11,7 @@ import CriteriaPage from './presentation/pages/CriteriaPage.jsx';
 import ChecklistPage from './presentation/pages/ChecklistPage.jsx';
 import ItemAuditPage from './presentation/pages/ItemAuditPage.jsx';
 import ActionPlanPage from './presentation/pages/ActionPlanPage.jsx';
+import ReportPage from './presentation/pages/ReportPage.jsx';
 import SaveFileButton from './presentation/components/SaveFileButton.jsx';
 
 function CurrentView() {
@@ -22,6 +23,7 @@ function CurrentView() {
   if (view === 'home' || (view !== 'general' && !audit)) return <HomePage />;
   if (view === 'general') return <GeneralPage mode={mode} />;
   if (view === 'dashboard') return <DashboardPage />;
+  if (view === 'report') return <ReportPage />;
   if (view === 'process') return <ProcessFormPage key={processId ?? 'new'} processId={processId} />;
   if (!findProcess(audit, processId)) return <DashboardPage />;
   if (view === 'criteria') return <CriteriaPage processId={processId} />;
