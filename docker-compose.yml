@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    image: asistente-auditoria:latest
+    container_name: asistente-auditoria
+    ports:
+      - "8080:8080"
+    volumes:
+      - audit-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  audit-data:
