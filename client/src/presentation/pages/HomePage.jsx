@@ -5,6 +5,7 @@ import { useNav } from '../../application/navigation/NavContext.jsx';
 import { http } from '../../infrastructure/api/httpClient.js';
 import { evidenceStore } from '../../infrastructure/storage/evidenceStore.js';
 import FrameworkList from '../components/FrameworkList.jsx';
+import ImportModal from '../components/ImportModal.jsx';
 import { formatDate } from '../components/ui.jsx';
 
 export default function HomePage() {
@@ -12,6 +13,7 @@ export default function HomePage() {
   const { audit, dispatch, logEvent } = useAudit();
   const { go } = useNav();
   const [serverOk, setServerOk] = useState(null);
+  const [importFile, setImportFile] = useState(null);
 
   useEffect(() => {
     http.get('/api/health').then(() => setServerOk(true), () => setServerOk(false));
@@ -40,6 +42,10 @@ export default function HomePage() {
         <p className="muted">{t('home.welcome')}</p>
         <div className="row">
           <button type="button" className="btn" onClick={startNew}>{t('home.new')}</button>
+          <label className="btn ghost file-btn">
+            📂 {t('home.fromFile')}
+            <input type="file" accept=".json,application/json" hidden onChange={(e) => { setImportFile(e.target.files[0] ?? null); e.target.value = ''; }} />
+          </label>
         </div>
         <p className="status-line small">
           {t('home.server')}:{' '}
@@ -65,6 +71,7 @@ export default function HomePage() {
       )}
 
       <FrameworkList />
+      {importFile && <ImportModal file={importFile} onClose={() => setImportFile(null)} />}
     </>
   );
 }
