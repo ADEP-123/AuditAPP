@@ -1,0 +1,474 @@
+{
+ "id": "owasp-top10-2025",
+ "version": "2025",
+ "name": {
+  "es": "OWASP Top 10:2025",
+  "en": "OWASP Top 10:2025"
+ },
+ "description": {
+  "es": "Los diez riesgos más críticos de las aplicaciones web.",
+  "en": "The ten most critical web application security risks."
+ },
+ "publisher": "OWASP Foundation",
+ "license": "CC BY-SA 4.0",
+ "source": "https://top10.owasp.org/2025/",
+ "textLanguages": [
+  "es",
+  "en"
+ ],
+ "hasLevels": false,
+ "groups": [
+  {
+   "id": "top10",
+   "name": {
+    "es": "Riesgos",
+    "en": "Risks"
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "A01:2025",
+   "group": "top10",
+   "title": {
+    "es": "Control de acceso roto",
+    "en": "Broken Access Control"
+   },
+   "text": {
+    "es": "Usuarios que actúan fuera de sus permisos: ven o cambian datos de otros, o usan funciones de un rol superior.",
+    "en": "Users acting outside their permissions: viewing or changing other users' data, or using higher-role functions."
+   },
+   "guidanceKey": "A01"
+  },
+  {
+   "id": "A02:2025",
+   "group": "top10",
+   "title": {
+    "es": "Configuración de seguridad incorrecta",
+    "en": "Security Misconfiguration"
+   },
+   "text": {
+    "es": "Valores por defecto inseguros, modo de depuración activo, cabeceras faltantes o servicios innecesarios expuestos.",
+    "en": "Insecure defaults, debug mode enabled, missing headers or unnecessary services exposed."
+   },
+   "guidanceKey": "A02"
+  },
+  {
+   "id": "A03:2025",
+   "group": "top10",
+   "title": {
+    "es": "Fallas en la cadena de suministro de software",
+    "en": "Software Supply Chain Failures"
+   },
+   "text": {
+    "es": "Dependencias vulnerables o sin mantenimiento, componentes de origen dudoso o un proceso de compilación comprometido.",
+    "en": "Vulnerable or unmaintained dependencies, components of doubtful origin or a compromised build process."
+   },
+   "guidanceKey": "A03"
+  },
+  {
+   "id": "A04:2025",
+   "group": "top10",
+   "title": {
+    "es": "Fallas criptográficas",
+    "en": "Cryptographic Failures"
+   },
+   "text": {
+    "es": "Datos sensibles sin cifrar, algoritmos débiles o llaves mal gestionadas.",
+    "en": "Sensitive data left unencrypted, weak algorithms or poorly managed keys."
+   },
+   "guidanceKey": "A04"
+  },
+  {
+   "id": "A05:2025",
+   "group": "top10",
+   "title": {
+    "es": "Inyección",
+    "en": "Injection"
+   },
+   "text": {
+    "es": "Datos del usuario que el sistema interpreta como código o como parte de una consulta.",
+    "en": "User data that the system interprets as code or as part of a query."
+   },
+   "guidanceKey": "A05"
+  },
+  {
+   "id": "A06:2025",
+   "group": "top10",
+   "title": {
+    "es": "Diseño inseguro",
+    "en": "Insecure Design"
+   },
+   "text": {
+    "es": "Fallas de diseño o de lógica de negocio que ningún control previene, aunque el código esté bien escrito.",
+    "en": "Design or business-logic flaws that no control prevents, even when the code is well written."
+   },
+   "guidanceKey": "A06"
+  },
+  {
+   "id": "A07:2025",
+   "group": "top10",
+   "title": {
+    "es": "Fallas de autenticación",
+    "en": "Authentication Failures"
+   },
+   "text": {
+    "es": "Debilidades al confirmar la identidad del usuario: contraseñas débiles, sin límite de intentos o sesiones mal manejadas.",
+    "en": "Weaknesses in confirming the user's identity: weak passwords, no attempt limits or poorly handled sessions."
+   },
+   "guidanceKey": "A07"
+  },
+  {
+   "id": "A08:2025",
+   "group": "top10",
+   "title": {
+    "es": "Fallas de integridad de software o datos",
+    "en": "Software or Data Integrity Failures"
+   },
+   "text": {
+    "es": "Actualizaciones, datos serializados o procesos de despliegue que se aceptan sin verificar su integridad.",
+    "en": "Updates, serialized data or deployment pipelines accepted without verifying their integrity."
+   },
+   "guidanceKey": "A08"
+  },
+  {
+   "id": "A09:2025",
+   "group": "top10",
+   "title": {
+    "es": "Fallas de registro y alerta de seguridad",
+    "en": "Security Logging and Alerting Failures"
+   },
+   "text": {
+    "es": "Eventos de seguridad que no se registran, no se revisan o no generan alertas a tiempo.",
+    "en": "Security events that are not logged, not reviewed or do not raise timely alerts."
+   },
+   "guidanceKey": "A09"
+  },
+  {
+   "id": "A10:2025",
+   "group": "top10",
+   "title": {
+    "es": "Manejo inadecuado de condiciones excepcionales",
+    "en": "Mishandling of Exceptional Conditions"
+   },
+   "text": {
+    "es": "Errores no controlados que dejan el sistema en un estado inseguro, revelan información o fallan de forma abierta.",
+    "en": "Unhandled errors that leave the system in an insecure state, leak information or fail open."
+   },
+   "guidanceKey": "A10"
+  }
+ ],
+ "guidance": {
+  "A01": {
+   "tests": [
+    "WSTG-ATHZ"
+   ],
+   "es": {
+    "how": [
+     "Arma una matriz de roles y permisos: qué puede hacer cada rol en cada función.",
+     "Con dos cuentas de prueba de distinto rol, intenta acceder a recursos del otro usuario o a funciones de un rol superior.",
+     "Revisa en el código si cada ruta verifica permisos en el servidor."
+    ],
+    "evidence": [
+     "Matriz de roles y permisos",
+     "Petición de un usuario a un recurso ajeno y su respuesta"
+    ]
+   },
+   "en": {
+    "how": [
+     "Build a role and permission matrix: what each role can do in each function.",
+     "With two test accounts of different roles, try to access the other user's resources or higher-role functions.",
+     "Check in the code whether every route enforces permissions on the server."
+    ],
+    "evidence": [
+     "Role and permission matrix",
+     "A user's request to someone else's resource and the response"
+    ]
+   },
+   "related": [
+    "V8"
+   ]
+  },
+  "A02": {
+   "tests": [
+    "WSTG-CONF",
+    "WSTG-INFO"
+   ],
+   "es": {
+    "how": [
+     "Revisa la configuración del servidor y del framework: modo de depuración, listado de directorios y archivos de respaldo expuestos.",
+     "Verifica que los secretos estén fuera del código fuente.",
+     "Usa ZAP para buscar archivos y rutas expuestos por error."
+    ],
+    "evidence": [
+     "Archivo de configuración revisado",
+     "Alertas de ZAP sobre archivos expuestos"
+    ]
+   },
+   "en": {
+    "how": [
+     "Review the server and framework configuration: debug mode, directory listing and exposed backup files.",
+     "Check that secrets are kept out of the source code.",
+     "Use ZAP to look for files and paths exposed by mistake."
+    ],
+    "evidence": [
+     "Reviewed configuration file",
+     "ZAP alerts about exposed files"
+    ]
+   },
+   "related": [
+    "V13"
+   ]
+  },
+  "A03": {
+   "tests": [
+    "SCA",
+    "SAST"
+   ],
+   "es": {
+    "how": [
+     "Obtén el inventario de dependencias directas e indirectas (por ejemplo package-lock.json).",
+     "Ejecuta un análisis de componentes (npm audit u OWASP Dependency-Check) y registra las vulnerabilidades con su severidad.",
+     "Verifica de dónde se descargan los componentes y si existe una política para actualizarlos."
+    ],
+    "evidence": [
+     "Reporte del análisis de dependencias",
+     "Política de actualización (si existe)"
+    ]
+   },
+   "en": {
+    "how": [
+     "Get the inventory of direct and transitive dependencies (for example package-lock.json).",
+     "Run a component analysis (npm audit or OWASP Dependency-Check) and record vulnerabilities with their severity.",
+     "Check where components are downloaded from and whether there is an update policy."
+    ],
+    "evidence": [
+     "Dependency analysis report",
+     "Update policy (if any)"
+    ]
+   },
+   "related": [
+    "V15"
+   ]
+  },
+  "A04": {
+   "tests": [
+    "WSTG-CRYP"
+   ],
+   "es": {
+    "how": [
+     "Haz un inventario de dónde se usa criptografía: contraseñas, datos guardados, tokens y comunicaciones.",
+     "Verifica que los algoritmos sean vigentes y que las llaves no estén en el código fuente.",
+     "Revisa cómo se generan los valores aleatorios de tokens y llaves."
+    ],
+    "evidence": [
+     "Fragmento de código con el algoritmo usado",
+     "Ubicación de llaves y secretos"
+    ]
+   },
+   "en": {
+    "how": [
+     "Inventory where cryptography is used: passwords, stored data, tokens and communications.",
+     "Check that algorithms are current and that keys are not in the source code.",
+     "Review how random values for tokens and keys are generated."
+    ],
+    "evidence": [
+     "Code snippet showing the algorithm used",
+     "Location of keys and secrets"
+    ]
+   },
+   "related": [
+    "V11"
+   ]
+  },
+  "A05": {
+   "tests": [
+    "WSTG-INPV",
+    "WSTG-CLNT"
+   ],
+   "es": {
+    "how": [
+     "Identifica dónde la aplicación recibe datos del usuario (formularios, parámetros de URL, cabeceras, API) y dónde los muestra o los pasa a un intérprete (SQL, HTML, comandos).",
+     "Revisa en el código si la salida se codifica según el contexto y si las consultas usan parámetros en lugar de concatenar texto.",
+     "Ejecuta un escaneo activo con ZAP sobre esos puntos y confirma a mano cada alerta antes de registrarla."
+    ],
+    "evidence": [
+     "Reporte de ZAP con las alertas confirmadas",
+     "Fragmento del código donde se arma la consulta o la salida",
+     "Captura de la respuesta de la aplicación"
+    ]
+   },
+   "en": {
+    "how": [
+     "Identify where the application receives user data (forms, URL parameters, headers, API) and where it displays it or passes it to an interpreter (SQL, HTML, commands).",
+     "Check in the code whether output is encoded for its context and whether queries use parameters instead of string concatenation.",
+     "Run a ZAP active scan on those points and manually confirm each alert before recording it."
+    ],
+    "evidence": [
+     "ZAP report with confirmed alerts",
+     "Code snippet where the query or output is built",
+     "Screenshot of the application response"
+    ]
+   },
+   "related": [
+    "V1"
+   ]
+  },
+  "A06": {
+   "tests": [
+    "WSTG-BUSL"
+   ],
+   "es": {
+    "how": [
+     "Revisa el flujo del proceso y anota qué podría hacer un usuario malintencionado en cada paso (casos de abuso).",
+     "Verifica que existan controles para esos casos: límites, confirmaciones, validaciones en el servidor.",
+     "Prueba con ZAP los casos de abuso más probables y registra si la aplicación los detiene."
+    ],
+    "evidence": [
+     "Lista de casos de abuso revisados",
+     "Petición y respuesta de la prueba"
+    ]
+   },
+   "en": {
+    "how": [
+     "Walk through the process flow and note what a malicious user could do at each step (abuse cases).",
+     "Check that controls exist for those cases: limits, confirmations, server-side validation.",
+     "Test the most likely abuse cases with ZAP and record whether the application stops them."
+    ],
+    "evidence": [
+     "List of reviewed abuse cases",
+     "Test request and response"
+    ]
+   },
+   "related": [
+    "V2",
+    "V15"
+   ]
+  },
+  "A07": {
+   "tests": [
+    "WSTG-ATHN",
+    "WSTG-IDNT"
+   ],
+   "es": {
+    "how": [
+     "Revisa la política de contraseñas: longitud mínima, verificación contra contraseñas comunes y límite de intentos fallidos.",
+     "Prueba el registro, el inicio de sesión y la recuperación de contraseña, y observa mensajes de error y bloqueos.",
+     "Revisa en el código cómo se guardan las contraseñas (algoritmo de hash y sal).",
+     "Verifica si las cuentas privilegiadas tienen autenticación multifactor."
+    ],
+    "evidence": [
+     "Captura de los mensajes del inicio de sesión",
+     "Fragmento del código que guarda las contraseñas"
+    ]
+   },
+   "en": {
+    "how": [
+     "Review the password policy: minimum length, check against common passwords and failed-attempt limits.",
+     "Test sign-up, login and password recovery, and observe error messages and lockouts.",
+     "Check in the code how passwords are stored (hash algorithm and salt).",
+     "Check whether privileged accounts use multi-factor authentication."
+    ],
+    "evidence": [
+     "Screenshot of login messages",
+     "Code snippet that stores passwords"
+    ]
+   },
+   "related": [
+    "V6"
+   ]
+  },
+  "A08": {
+   "tests": [
+    "SAST",
+    "SCA"
+   ],
+   "es": {
+    "how": [
+     "Verifica cómo se instalan las actualizaciones y dependencias: firmas, sumas de verificación o fuentes de confianza.",
+     "Revisa si la aplicación acepta datos serializados de fuentes no confiables y cómo los valida.",
+     "Revisa quién puede modificar el proceso de compilación y despliegue."
+    ],
+    "evidence": [
+     "Configuración del proceso de despliegue",
+     "Fragmento de código que procesa datos serializados"
+    ]
+   },
+   "en": {
+    "how": [
+     "Check how updates and dependencies are installed: signatures, checksums or trusted sources.",
+     "Check whether the application accepts serialized data from untrusted sources and how it validates it.",
+     "Review who can modify the build and deployment process."
+    ],
+    "evidence": [
+     "Deployment pipeline configuration",
+     "Code snippet that processes serialized data"
+    ]
+   },
+   "related": [
+    "V15"
+   ]
+  },
+  "A09": {
+   "tests": [
+    "WSTG-ERRH"
+   ],
+   "es": {
+    "how": [
+     "Verifica qué eventos de seguridad se registran (inicios de sesión, fallos, cambios de permisos) y con qué datos.",
+     "Provoca errores controlados y revisa que la respuesta no muestre trazas ni detalles internos.",
+     "Comprueba que los registros no guarden contraseñas ni datos sensibles."
+    ],
+    "evidence": [
+     "Extracto de los registros",
+     "Respuesta de error de la aplicación"
+    ]
+   },
+   "en": {
+    "how": [
+     "Check which security events are logged (logins, failures, permission changes) and with what data.",
+     "Trigger controlled errors and check that the response shows no stack traces or internal details.",
+     "Check that logs do not store passwords or sensitive data."
+    ],
+    "evidence": [
+     "Log excerpt",
+     "Application error response"
+    ]
+   },
+   "related": [
+    "V16"
+   ]
+  },
+  "A10": {
+   "tests": [
+    "WSTG-ERRH"
+   ],
+   "es": {
+    "how": [
+     "Provoca errores controlados (datos inválidos, recursos inexistentes, peticiones incompletas) y observa la respuesta.",
+     "Verifica que ante un error la aplicación niegue el acceso en lugar de concederlo (fallar de forma cerrada).",
+     "Revisa que los mensajes de error no muestren trazas ni detalles internos."
+    ],
+    "evidence": [
+     "Respuestas de error capturadas",
+     "Código de manejo de excepciones"
+    ]
+   },
+   "en": {
+    "how": [
+     "Trigger controlled errors (invalid data, missing resources, incomplete requests) and observe the response.",
+     "Check that on error the application denies access instead of granting it (fail closed).",
+     "Check that error messages show no stack traces or internal details."
+    ],
+    "evidence": [
+     "Captured error responses",
+     "Exception handling code"
+    ]
+   },
+   "related": [
+    "V16",
+    "V2"
+   ]
+  }
+ }
+}
