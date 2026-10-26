@@ -182,3 +182,10 @@ input[type='checkbox'], input[type='radio'] { width: auto; }
 .integrity.bad { border-left-color: var(--danger); }
 .integrity ul { margin: 6px 0; }
 .warning-box { border: 1px solid var(--warning); border-radius: 8px; padding: 10px; margin: 8px 0; }
+
+/* --- informe --- */
+.stats { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.stats div { flex: 1 1 140px; background: var(--surface-2); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; }
+.stats strong { font-size: 1.5rem; }
+.stats span { color: var(--muted); font-size: 0.85rem; }
+.warning-text { color: var(--warning); }

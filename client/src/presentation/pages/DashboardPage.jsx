@@ -22,7 +22,12 @@ export default function DashboardPage() {
       <PageHeader
         title={audit.general.title}
         subtitle={`${audit.general.company} · ${t('home.startedAt')} ${formatDate(audit.createdAt, lang)} · ${auditor?.name ?? ''}`}
-        actions={<button type="button" className="btn ghost" onClick={() => go('general', { mode: 'edit' })}>{t('dashboard.editGeneral')}</button>}
+        actions={
+          <>
+            <button type="button" className="btn ghost" onClick={() => go('general', { mode: 'edit' })}>{t('dashboard.editGeneral')}</button>
+            <button type="button" className="btn" disabled={!audit.processes.length} onClick={() => go('report')}>{t('dashboard.report')}</button>
+          </>
+        }
       />
 
       <section className="card">

@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import { isHash, stampString, verifyAudit } from '../../../../shared/integrity.js';
+import { contentString, isHash, stampString, verifyAudit } from '../../../../shared/integrity.js';
 import { AppError } from '../errors.js';
 
 const sha256 = async (text) => crypto.createHash('sha256').update(text, 'utf8').digest('hex');
@@ -19,6 +19,8 @@ export function createIntegrityService(key) {
       const serverAt = new Date().toISOString();
       return { serverAt, stamp: hmac(hash, serverAt) };
     },
+
+    contentHash: (audit) => sha256(contentString(audit)),
 
     verify(audit) {
       if (!audit || typeof audit !== 'object' || !Array.isArray(audit.log)) throw new AppError(400, 'audit with log is required');
