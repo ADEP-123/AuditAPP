@@ -5,6 +5,7 @@
     "data",
     "domain",
     "infra",
-    "app"
+    "app",
+    "ui"
   ]
 }
