@@ -1,0 +1,14 @@
+{
+  "name": "asistente-auditoria",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Asistente web para auditorías de procesos guiadas por marcos normativos",
+  "scripts": {
+    "install:all": "npm ci --prefix server && npm ci --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "start": "npm start --prefix server",
+    "test": "npm test --prefix server"
+  }
+}
