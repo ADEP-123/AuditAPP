@@ -5,6 +5,7 @@ import { useNav } from '../../application/navigation/NavContext.jsx';
 import { collectDeviceInfo } from '../../infrastructure/device/deviceInfo.js';
 import { getLocation } from '../../infrastructure/device/geolocation.js';
 import { systemApi } from '../../infrastructure/api/systemApi.js';
+import { evidenceStore } from '../../infrastructure/storage/evidenceStore.js';
 import { createAudit } from '../../domain/audit.js';
 import { Field, PageHeader, formatDate } from '../components/ui.jsx';
 import DeviceSummary from '../components/DeviceSummary.jsx';
@@ -56,6 +57,7 @@ export default function GeneralPage({ mode }) {
         device: { ...device, ip: ctx?.ip ?? null },
         serverTime: ctx?.serverTime,
       });
+      evidenceStore.clear().catch(() => {}); // las imágenes de una auditoría anterior no se mezclan
       dispatch({ type: 'load', audit: created });
       logEvent('audit.created', { title: form.title, company: form.company, consent: true });
     } else {

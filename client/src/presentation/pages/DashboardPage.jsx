@@ -44,6 +44,7 @@ export default function DashboardPage() {
               <ProgressBar pct={prog.pct} />
               <div className="row">
                 <button type="button" className="btn small" disabled={!p.items.length} onClick={() => go('checklist', { processId: p.id })}>{t('dashboard.audit')}</button>
+                <button type="button" className="btn ghost small" onClick={() => go('plan', { processId: p.id })}>{t('dashboard.plan')}</button>
                 <button type="button" className="btn ghost small" onClick={() => go('criteria', { processId: p.id })}>{t('dashboard.criteria')} ({p.items.length})</button>
                 <button type="button" className="btn ghost small" onClick={() => go('process', { processId: p.id })}>{t('common.edit')}</button>
                 <button type="button" className="btn ghost small" onClick={() => remove(p)}>{t('common.remove')}</button>
