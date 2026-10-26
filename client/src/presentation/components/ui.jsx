@@ -1,17 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { cloneElement, useEffect, useId, useRef } from 'react';
 import { useI18n } from '../../application/i18n/I18nContext.jsx';
 import { STATUS } from '../../domain/audit.js';
 
+// La ayuda se asocia con aria-describedby para que no forme parte del nombre del campo.
 export function Field({ label, hint, required, children }) {
+  const id = useId();
   return (
-    <label className="field">
-      <span className="field-label">
+    <div className="field">
+      <label className="field-label" htmlFor={id}>
         {label}
         {required && <span aria-hidden="true"> *</span>}
-      </span>
-      {children}
-      {hint && <small className="muted">{hint}</small>}
-    </label>
+      </label>
+      {cloneElement(children, { id, 'aria-describedby': hint ? `${id}-hint` : undefined })}
+      {hint && <small id={`${id}-hint`} className="muted">{hint}</small>}
+    </div>
   );
 }
 
@@ -52,6 +54,14 @@ const STATUS_CLASS = {
 export function StatusBadge({ status }) {
   const { t } = useI18n();
   return <span className={`badge ${STATUS_CLASS[status]}`}>{t(`status.${status}`)}</span>;
+}
+
+const SEVERITY_CLASS = { note: 'muted', low: 'info', medium: 'warning', high: 'danger', critical: 'critical' };
+
+export function SeverityBadge({ severity }) {
+  const { t } = useI18n();
+  if (!severity) return null;
+  return <span className={`badge ${SEVERITY_CLASS[severity]}`}>{t('risk.severity')}: {t(`severity.${severity}`)}</span>;
 }
 
 export function ProgressBar({ pct }) {

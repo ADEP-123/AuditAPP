@@ -6,6 +6,7 @@
     "domain",
     "infra",
     "app",
-    "ui"
+    "ui",
+    "shared"
   ]
 }

@@ -2,10 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '../../application/i18n/I18nContext.jsx';
 import { useAudit } from '../../application/audit/AuditContext.jsx';
 import { useNav } from '../../application/navigation/NavContext.jsx';
-import { AUDITED_STATUSES, STATUS, findProcess, uid } from '../../domain/audit.js';
+import { AUDITED_STATUSES, STATUS, findProcess, needsFinding, uid } from '../../domain/audit.js';
+import { isFindingComplete } from '../../../../shared/findings.js';
 import { loc } from '../../domain/localize.js';
 import { Field, PageHeader, StatusBadge, formatDate, formatDuration } from '../components/ui.jsx';
 import GuidanceModal from '../components/GuidanceModal.jsx';
+import FindingForm from '../components/FindingForm.jsx';
+import ImageEvidence from '../components/ImageEvidence.jsx';
 
 export default function ItemAuditPage({ processId, itemKey }) {
   const { t, lang } = useI18n();
@@ -15,7 +18,8 @@ export default function ItemAuditPage({ processId, itemKey }) {
   const index = process.items.findIndex((i) => i.key === itemKey);
   const item = process.items[index];
 
-  const [form, setForm] = useState(() => ({ status: item.status, notes: item.notes, evidence: item.evidence }));
+  const formFrom = (it) => ({ status: it.status, notes: it.notes, evidence: it.evidence, images: it.images ?? [], finding: it.finding ?? null });
+  const [form, setForm] = useState(() => formFrom(item));
   const [showGuide, setShowGuide] = useState(false);
   const openedAt = useRef(null);
 
@@ -23,12 +27,15 @@ export default function ItemAuditPage({ processId, itemKey }) {
   useEffect(() => {
     if (openedAt.current?.key === itemKey) return;
     openedAt.current = { key: itemKey, at: Date.now() };
-    setForm({ status: item.status, notes: item.notes, evidence: item.evidence });
+    setForm(formFrom(item));
     if (!item.startedAt) dispatch({ type: 'updateItem', processId, key: itemKey, patch: { startedAt: new Date().toISOString() } });
     logEvent('item.opened', { processId, key: itemKey });
   }, [itemKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const dirty = form.status !== item.status || form.notes !== item.notes || form.evidence !== item.evidence;
+  const dirty = ['status', 'notes', 'evidence', 'images', 'finding'].some((k) => form[k] !== (item[k] ?? (k === 'images' ? [] : k === 'finding' ? null : undefined)));
+  const withFinding = needsFinding(form.status);
+  const finding = form.finding ?? newFinding(item, lang);
+  const canSave = form.status !== STATUS.PENDING && (!withFinding || isFindingComplete(finding));
 
   const save = () => {
     const now = Date.now();
@@ -38,9 +45,14 @@ export default function ItemAuditPage({ processId, itemKey }) {
       type: 'updateItem',
       processId,
       key: itemKey,
-      patch: { ...form, lastSavedAt: new Date(now).toISOString(), timeSpentMs: (item.timeSpentMs || 0) + spent },
+      patch: {
+        ...form,
+        finding: withFinding ? finding : null, // si ya cumple, no queda hallazgo en el informe
+        lastSavedAt: new Date(now).toISOString(),
+        timeSpentMs: (item.timeSpentMs || 0) + spent,
+      },
     });
-    logEvent('item.saved', { processId, key: itemKey, status: form.status, spentMs: spent });
+    logEvent('item.saved', { processId, key: itemKey, status: form.status, spentMs: spent, images: form.images.map((i) => i.sha256) });
   };
 
   const goTo = (i) => {
@@ -111,7 +123,13 @@ export default function ItemAuditPage({ processId, itemKey }) {
         <button type="button" className="btn ghost small" onClick={() => setForm((f) => ({ ...f, evidence: [...f.evidence, { id: uid(), description: '' }] }))}>
           + {t('item.addEvidence')}
         </button>
+
+        <h3>{t('images.title')}</h3>
+        <ImageEvidence images={form.images} onChange={(images) => setForm((f) => ({ ...f, images }))} />
       </section>
+
+      {withFinding && <FindingForm finding={finding} onChange={(fd) => setForm((f) => ({ ...f, finding: fd }))} />}
+      {withFinding && !isFindingComplete(finding) && <p className="small muted">{t('finding.required')}</p>}
 
       <div className="row between">
         <div className="row">
@@ -119,12 +137,26 @@ export default function ItemAuditPage({ processId, itemKey }) {
           <button type="button" className="btn ghost" disabled={index === process.items.length - 1} onClick={() => goTo(index + 1)}>{t('item.next')} →</button>
         </div>
         <div className="row">
-          <button type="button" className="btn ghost" disabled={form.status === STATUS.PENDING} onClick={save}>{t('common.save')}</button>
-          <button type="button" className="btn" disabled={form.status === STATUS.PENDING} onClick={saveAndNext}>{t('item.saveNext')}</button>
+          <button type="button" className="btn ghost" disabled={!canSave} onClick={save}>{t('common.save')}</button>
+          <button type="button" className="btn" disabled={!canSave} onClick={saveAndNext}>{t('item.saveNext')}</button>
         </div>
       </div>
 
       {showGuide && <GuidanceModal item={item} onClose={() => setShowGuide(false)} />}
     </>
   );
+}
+
+// Hallazgo nuevo con el criterio ya escrito a partir del requisito auditado.
+function newFinding(item, lang) {
+  const req = item.text ? `: ${loc(item.text, lang)}` : ` – ${loc(item.title, lang)}`;
+  return {
+    title: '',
+    criterion: `${loc(item.framework.name, lang)} ${item.itemId}${req}`,
+    condition: '',
+    cause: '',
+    effect: '',
+    recommendation: '',
+    risk: {},
+  };
 }

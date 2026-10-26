@@ -3,7 +3,8 @@ import { useAudit } from '../../application/audit/AuditContext.jsx';
 import { useNav } from '../../application/navigation/NavContext.jsx';
 import { findProcess, processProgress } from '../../domain/audit.js';
 import { loc } from '../../domain/localize.js';
-import { PageHeader, ProgressBar, StatusBadge, formatDuration } from '../components/ui.jsx';
+import { PageHeader, ProgressBar, SeverityBadge, StatusBadge, formatDuration } from '../components/ui.jsx';
+import { rateRisk } from '../../../../shared/riskRating.js';
 
 export default function ChecklistPage({ processId }) {
   const { t, lang } = useI18n();
@@ -29,6 +30,7 @@ export default function ChecklistPage({ processId }) {
           <>
             <button type="button" className="btn ghost" onClick={() => go('dashboard')}>{t('common.back')}</button>
             <button type="button" className="btn ghost" onClick={() => go('criteria', { processId })}>{t('dashboard.criteria')}</button>
+            <button type="button" className="btn ghost" onClick={() => go('plan', { processId })}>{t('dashboard.plan')}</button>
           </>
         }
       />
@@ -53,7 +55,10 @@ export default function ChecklistPage({ processId }) {
                     {loc(it.title, lang) !== it.itemId ? loc(it.title, lang) : ''}
                     {it.text && <span className="block small muted clamp">{loc(it.text, lang)}</span>}
                   </td>
-                  <td><StatusBadge status={it.status} /></td>
+                  <td>
+                    <StatusBadge status={it.status} />
+                    {it.finding && <span className="block"><SeverityBadge severity={rateRisk(it.finding.risk)?.severity} /></span>}
+                  </td>
                   <td className="small">{it.timeSpentMs ? formatDuration(it.timeSpentMs) : '—'}</td>
                 </tr>
               ))}

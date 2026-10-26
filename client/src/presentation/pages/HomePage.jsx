@@ -3,6 +3,7 @@ import { useI18n } from '../../application/i18n/I18nContext.jsx';
 import { useAudit } from '../../application/audit/AuditContext.jsx';
 import { useNav } from '../../application/navigation/NavContext.jsx';
 import { http } from '../../infrastructure/api/httpClient.js';
+import { evidenceStore } from '../../infrastructure/storage/evidenceStore.js';
 import FrameworkList from '../components/FrameworkList.jsx';
 import { formatDate } from '../components/ui.jsx';
 
@@ -27,7 +28,9 @@ export default function HomePage() {
   };
 
   const discard = () => {
-    if (window.confirm(t('home.confirmDiscard'))) dispatch({ type: 'clear' });
+    if (!window.confirm(t('home.confirmDiscard'))) return;
+    dispatch({ type: 'clear' });
+    evidenceStore.clear().catch(() => {});
   };
 
   return (

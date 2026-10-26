@@ -10,6 +10,7 @@ import ProcessFormPage from './presentation/pages/ProcessFormPage.jsx';
 import CriteriaPage from './presentation/pages/CriteriaPage.jsx';
 import ChecklistPage from './presentation/pages/ChecklistPage.jsx';
 import ItemAuditPage from './presentation/pages/ItemAuditPage.jsx';
+import ActionPlanPage from './presentation/pages/ActionPlanPage.jsx';
 
 function CurrentView() {
   const { route } = useNav();
@@ -24,6 +25,7 @@ function CurrentView() {
   if (!findProcess(audit, processId)) return <DashboardPage />;
   if (view === 'criteria') return <CriteriaPage processId={processId} />;
   if (view === 'checklist') return <ChecklistPage processId={processId} />;
+  if (view === 'plan') return <ActionPlanPage processId={processId} />;
   if (view === 'item' && findProcess(audit, processId).items.some((i) => i.key === itemKey))
     return <ItemAuditPage processId={processId} itemKey={itemKey} />;
   return <ChecklistPage processId={processId} />;
