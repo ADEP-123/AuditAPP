@@ -11,6 +11,7 @@ import CriteriaPage from './presentation/pages/CriteriaPage.jsx';
 import ChecklistPage from './presentation/pages/ChecklistPage.jsx';
 import ItemAuditPage from './presentation/pages/ItemAuditPage.jsx';
 import ActionPlanPage from './presentation/pages/ActionPlanPage.jsx';
+import SaveFileButton from './presentation/components/SaveFileButton.jsx';
 
 function CurrentView() {
   const { route } = useNav();
@@ -39,7 +40,9 @@ export default function App() {
     <>
       <AppHeader onHome={() => go('home')}>
         {audit && <button type="button" className="btn ghost" onClick={() => go('dashboard')}>{t('nav.dashboard')}</button>}
+        {audit && <SaveFileButton />}
       </AppHeader>
+      {!window.isSecureContext && <p className="banner danger">{t('common.insecure')}</p>}
       {saveError && <p className="banner danger">{t('common.saveError')}</p>}
       <main className="container">
         <CurrentView />

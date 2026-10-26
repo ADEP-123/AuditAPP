@@ -3,6 +3,7 @@ import { useAudit } from '../../application/audit/AuditContext.jsx';
 import { useNav } from '../../application/navigation/NavContext.jsx';
 import { processProgress } from '../../domain/audit.js';
 import { PageHeader, ProgressBar, formatDate } from '../components/ui.jsx';
+import IntegrityPanel from '../components/IntegrityPanel.jsx';
 
 export default function DashboardPage() {
   const { t, lang } = useI18n();
@@ -53,6 +54,8 @@ export default function DashboardPage() {
           );
         })}
       </section>
+
+      <IntegrityPanel />
     </>
   );
 }

@@ -1,6 +1,8 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { auditStorage } from '../../infrastructure/storage/auditStorage.js';
-import { systemApi } from '../../infrastructure/api/systemApi.js';
+import { integrityApi } from '../../infrastructure/api/integrityApi.js';
+import { sha256Hex } from '../../infrastructure/crypto/hash.js';
+import { GENESIS, contentString, eventString } from '../../../../shared/integrity.js';
 
 const AuditContext = createContext(null);
 
@@ -30,48 +32,69 @@ function reducer(state, action) {
         ...p,
         items: p.items.map((i) => (i.key === action.key ? { ...i, ...action.patch } : i)),
       }));
-    case 'log':
-      return { ...state, log: [...state.log, { seq: state.log.length + 1, ...action.event }] };
     default:
       throw new Error(`Acción desconocida: ${action.type}`);
   }
 }
 
 export function AuditProvider({ children }) {
-  const [audit, dispatch] = useReducer(reducer, undefined, auditStorage.load);
+  const [audit, setAudit] = useState(auditStorage.load);
   const [saveError, setSaveError] = useState(false);
-  const auditRef = useRef(audit);
-  auditRef.current = audit;
+  // ref = estado más reciente, actualizado de forma síncrona: la bitácora siempre ve el último cambio.
+  const ref = useRef(audit);
+
+  const commit = useCallback((next) => {
+    ref.current = next;
+    setAudit(next);
+  }, []);
+  const dispatch = useCallback((action) => commit(reducer(ref.current, action)), [commit]);
 
   // Autoguardado inmediato: si el auditor cierra la pestaña justo después de guardar, no se pierde nada.
   useEffect(() => {
     setSaveError(!auditStorage.save(audit));
   }, [audit]);
 
-  // Bitácora: los eventos se registran en orden, con la hora del navegador y la del servidor.
+  // Bitácora encadenada: cada evento lleva el hash del anterior, el hash del estado de la auditoría
+  // y el sello de tiempo del servidor. Los eventos se procesan uno a uno, en orden.
   const queue = useRef(Promise.resolve());
-  const logEvent = useCallback((type, data = {}) => {
-    const clientAt = new Date().toISOString();
-    queue.current = queue.current.then(async () => {
-      const ctx = await systemApi.context().catch(() => null);
-      const current = auditRef.current; // leído después de esperar: incluye cambios recién despachados
-      if (!current) return;
-      dispatch({
-        type: 'log',
-        event: {
-          type,
-          clientAt,
-          serverAt: ctx?.serverTime ?? null,
-          auditorId: current.currentAuditorId,
-          deviceId: current.currentDeviceId,
-          data,
-        },
-      });
-    });
-    return queue.current;
-  }, []);
+  const logEvent = useCallback(
+    (type, data = {}) => {
+      const clientAt = new Date().toISOString();
+      queue.current = queue.current
+        .then(async () => {
+          const cur = ref.current;
+          if (!cur) return;
+          const prev = cur.log.at(-1);
+          const event = {
+            seq: cur.log.length + 1,
+            type,
+            clientAt,
+            auditorId: cur.currentAuditorId,
+            deviceId: cur.currentDeviceId,
+            data,
+            stateHash: await sha256Hex(contentString(cur)),
+            prevHash: prev?.hash ?? GENESIS,
+          };
+          event.hash = await sha256Hex(eventString(event));
+          Object.assign(event, await integrityApi.stamp(event.hash).catch(() => ({ serverAt: null, stamp: null })));
+          const latest = ref.current;
+          if (latest?.id !== cur.id) return; // la auditoría fue reemplazada o descartada
+          commit({ ...latest, log: [...latest.log, event] });
+        })
+        .catch((e) => console.error('No se pudo registrar el evento', type, e));
+      return queue.current;
+    },
+    [commit],
+  );
 
-  const value = useMemo(() => ({ audit, dispatch, logEvent, saveError }), [audit, logEvent, saveError]);
+  // Espera a que todos los eventos pendientes queden registrados (antes de exportar).
+  const flush = useCallback(() => queue.current, []);
+  const current = useCallback(() => ref.current, []);
+
+  const value = useMemo(
+    () => ({ audit, dispatch, logEvent, flush, current, saveError }),
+    [audit, dispatch, logEvent, flush, current, saveError],
+  );
   return <AuditContext.Provider value={value}>{children}</AuditContext.Provider>;
 }
 

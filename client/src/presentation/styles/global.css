@@ -176,3 +176,9 @@ input[type='checkbox'], input[type='radio'] { width: auto; }
 .thumb-missing { display: grid; place-items: center; height: 130px; border: 1px dashed var(--border); border-radius: 6px; }
 .file-btn { display: inline-block; }
 .tile.action { margin: 10px 0; }
+
+/* --- integridad e importación --- */
+.integrity { border: 1px solid var(--border); border-left: 4px solid var(--success); border-radius: 8px; padding: 10px 14px; margin: 8px 0; }
+.integrity.bad { border-left-color: var(--danger); }
+.integrity ul { margin: 6px 0; }
+.warning-box { border: 1px solid var(--warning); border-radius: 8px; padding: 10px; margin: 8px 0; }
