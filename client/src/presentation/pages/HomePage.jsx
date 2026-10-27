@@ -7,6 +7,7 @@ import { evidenceStore } from '../../infrastructure/storage/evidenceStore.js';
 import FrameworkList from '../components/FrameworkList.jsx';
 import ImportModal from '../components/ImportModal.jsx';
 import { formatDate } from '../components/ui.jsx';
+import Seal from '../components/Seal.jsx';
 
 export default function HomePage() {
   const { t, lang } = useI18n();
@@ -37,22 +38,25 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="card hero">
-        <h1>{t('app.title')}</h1>
-        <p className="muted">{t('home.welcome')}</p>
-        <div className="row">
-          <button type="button" className="btn" onClick={startNew}>{t('home.new')}</button>
-          <label className="btn ghost file-btn">
-            📂 {t('home.fromFile')}
-            <input type="file" accept=".json,application/json" hidden onChange={(e) => { setImportFile(e.target.files[0] ?? null); e.target.value = ''; }} />
-          </label>
+      <section className="hero">
+        <div className="hero-copy">
+          <h1>{t('app.title')}</h1>
+          <p className="lead">{t('home.welcome')}</p>
+          <div className="row">
+            <button type="button" className="btn" onClick={startNew}>{t('home.new')}</button>
+            <label className="btn ghost file-btn">
+              📂 {t('home.fromFile')}
+              <input type="file" accept=".json,application/json" hidden onChange={(e) => { setImportFile(e.target.files[0] ?? null); e.target.value = ''; }} />
+            </label>
+          </div>
+          <p className="status-line small">
+            {t('home.server')}:{' '}
+            <span className={serverOk ? 'badge success' : 'badge danger'}>
+              {serverOk === null ? '…' : serverOk ? t('home.serverOk') : t('home.serverDown')}
+            </span>
+          </p>
         </div>
-        <p className="status-line small">
-          {t('home.server')}:{' '}
-          <span className={serverOk ? 'badge success' : 'badge danger'}>
-            {serverOk === null ? '…' : serverOk ? t('home.serverOk') : t('home.serverDown')}
-          </span>
-        </p>
+        <Seal size={196} text={t('seal.legend')} className="hero-seal" />
       </section>
 
       {audit && (

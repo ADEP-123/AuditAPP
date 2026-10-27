@@ -259,4 +259,7 @@ export default {
   'report.finished': "Audit finished",
   'report.confirmFinish': "{n} items are still pending. Finish anyway?",
   'report.error': "The report could not be generated: {msg}",
+
+  'footer.credit': "Website developed for the Software Auditing course, Software Engineering program, UDES 2026.",
+  'seal.legend': "UDES ✦ SOFTWARE AUDITING ✦ 2026 ✦",
 };

@@ -7,7 +7,7 @@ export function NavProvider({ children }) {
   const [route, setRoute] = useState({ view: 'home' });
   const go = useCallback((view, params = {}) => {
     setRoute({ view, ...params });
-    window.scrollTo(0, 0);
+    document.querySelector('main')?.scrollTo(0, 0); // la zona que se desplaza es <main>, no la ventana
   }, []);
   const value = useMemo(() => ({ route, go }), [route, go]);
   return <NavContext.Provider value={value}>{children}</NavContext.Provider>;

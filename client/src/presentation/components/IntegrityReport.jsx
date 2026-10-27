@@ -1,5 +1,6 @@
 import { useI18n } from '../../application/i18n/I18nContext.jsx';
 import { formatDate } from './ui.jsx';
+import Seal from './Seal.jsx';
 
 // Resultado de verificar la bitácora y las imágenes de una auditoría.
 export default function IntegrityReport({ result }) {
@@ -7,8 +8,9 @@ export default function IntegrityReport({ result }) {
   const { log, imageIssues, valid } = result;
   return (
     <div className={`integrity ${valid ? 'ok' : 'bad'}`}>
-      <p>
-        <strong>{valid ? `✔ ${t('integrity.valid')}` : `✖ ${t('integrity.invalid')}`}</strong>
+      <p className="integrity-head">
+        {valid && <Seal size={36} />}
+        <strong>{valid ? t('integrity.valid') : `✖ ${t('integrity.invalid')}`}</strong>
         <br />
         <span className="small muted">
           {t('integrity.summary', { n: log.events })} · {formatDate(log.firstServerAt, lang)} → {formatDate(log.lastServerAt, lang)}
