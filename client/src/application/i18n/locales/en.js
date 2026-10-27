@@ -259,4 +259,6 @@ export default {
   'report.finished': "Audit finished",
   'report.confirmFinish': "{n} items are still pending. Finish anyway?",
   'report.error': "The report could not be generated: {msg}",
+
+  'seal.legend': "UDES ✦ SOFTWARE AUDITING ✦ 2026 ✦",
 };

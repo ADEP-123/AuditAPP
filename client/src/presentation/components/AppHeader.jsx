@@ -1,5 +1,6 @@
 import { useI18n } from '../../application/i18n/I18nContext.jsx';
 import { useTheme } from '../../application/theme/ThemeContext.jsx';
+import Seal from './Seal.jsx';
 
 export default function AppHeader({ children, onHome }) {
   const { t, toggleLang } = useI18n();
@@ -8,7 +9,7 @@ export default function AppHeader({ children, onHome }) {
   return (
     <header className="app-header">
       <div className="brand" role="button" tabIndex={0} onClick={onHome} onKeyDown={(e) => e.key === 'Enter' && onHome?.()}>
-        <span className="brand-mark" aria-hidden="true">✓</span>
+        <Seal size={38} className="brand-mark" />
         <div>
           <strong>{t('app.title')}</strong>
           <small className="hide-sm">{t('app.tagline')}</small>

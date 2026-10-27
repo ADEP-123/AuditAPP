@@ -259,4 +259,6 @@ export default {
   'report.finished': "Auditoría finalizada",
   'report.confirmFinish': "Quedan {n} puntos pendientes. ¿Finalizar de todos modos?",
   'report.error': "No se pudo generar el informe: {msg}",
+
+  'seal.legend': "UDES ✦ AUDITORÍA DE SOFTWARE ✦ 2026 ✦",
 };
