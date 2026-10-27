@@ -260,5 +260,6 @@ export default {
   'report.confirmFinish': "Quedan {n} puntos pendientes. ¿Finalizar de todos modos?",
   'report.error': "No se pudo generar el informe: {msg}",
 
+  'footer.credit': "Página web desarrollada en el marco de la asignatura Auditoría de Software, Ingeniería de Software UDES 2026.",
   'seal.legend': "UDES ✦ AUDITORÍA DE SOFTWARE ✦ 2026 ✦",
 };

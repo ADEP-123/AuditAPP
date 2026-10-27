@@ -13,6 +13,7 @@ import ItemAuditPage from './presentation/pages/ItemAuditPage.jsx';
 import ActionPlanPage from './presentation/pages/ActionPlanPage.jsx';
 import ReportPage from './presentation/pages/ReportPage.jsx';
 import SaveFileButton from './presentation/components/SaveFileButton.jsx';
+import AppFooter from './presentation/components/AppFooter.jsx';
 
 function CurrentView() {
   const { route } = useNav();
@@ -49,6 +50,7 @@ export default function App() {
       <main className="container">
         <CurrentView />
       </main>
+      <AppFooter />
     </>
   );
 }
