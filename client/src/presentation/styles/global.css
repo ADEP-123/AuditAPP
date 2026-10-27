@@ -1,37 +1,49 @@
 :root {
-  --bg: #f5f6f8;
+  /* paleta de referencia UDES: azul institucional y oro del escudo */
+  --navy: #0b2f5b;
+  --gold: #c79a2b;
+  --bg: #f3f5f8;
   --surface: #ffffff;
-  --surface-2: #eef0f4;
-  --text: #1c2230;
-  --muted: #5b6475;
-  --border: #d9dde5;
-  --primary: #2457c5;
+  --surface-2: #e9edf3;
+  --text: #13213a;
+  --muted: #56627a;
+  --border: #d3dae4;
+  --primary: #0b2f5b;
   --primary-text: #ffffff;
-  --success: #1f7a4d;
-  --warning: #9a6200;
+  --accent-text: #85601a; /* oro oscurecido para texto: 5:1 sobre blanco */
+  --header-bg: #0b2f5b;
+  --header-text: #f3f5f8;
+  --seal-core: #0b2f5b;
+  --success: #1d6b45;
+  --warning: #8f5b00;
   --danger: #b42318;
-  --info: #0b6e8a;
+  --info: #0b6380;
   --critical: #7a0b2e;
-  --radius: 10px;
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 2px 8px rgb(0 0 0 / 0.04);
+  --radius: 6px;
+  --font-body: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-head: 'Bitter', Georgia, 'Times New Roman', serif;
   color-scheme: light;
 }
 
 :root[data-theme='dark'] {
-  --bg: #12151c;
-  --surface: #1b2029;
-  --surface-2: #232a35;
-  --text: #e6e9ef;
-  --muted: #9aa3b2;
-  --border: #323a47;
-  --primary: #6d9bff;
-  --primary-text: #0d1220;
+  --gold: #d9b04a;
+  --bg: #0c1626;
+  --surface: #13213a;
+  --surface-2: #1a2b47;
+  --text: #e8edf5;
+  --muted: #a3b0c5;
+  --border: #2a3b58;
+  --primary: #8db4f0;
+  --primary-text: #0c1626;
+  --accent-text: #e2bf62;
+  --header-bg: #08101d;
+  --header-text: #e8edf5;
+  --seal-core: #0b2f5b;
   --success: #4cc38a;
   --warning: #e7a33e;
   --danger: #ff7a70;
   --info: #5cc8e6;
   --critical: #ff5c8a;
-  --shadow: none;
   color-scheme: dark;
 }
 
@@ -41,44 +53,74 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font: 16px/1.55 var(--font-body);
 }
+#root { min-height: 100dvh; display: flex; flex-direction: column; }
+#root > main { flex: 1 0 auto; width: 100%; }
 
-h1, h2, h3 { line-height: 1.25; margin: 0 0 0.5em; }
-h1 { font-size: 1.6rem; }
-h2 { font-size: 1.25rem; }
-h3 { font-size: 1.05rem; }
+h1, h2, h3 { font-family: var(--font-head); font-weight: 700; line-height: 1.2; margin: 0 0 0.5em; letter-spacing: -0.01em; }
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.3rem; font-weight: 600; }
+h3 { font-size: 1.08rem; font-weight: 600; }
 a { color: var(--primary); }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
 
 .app-header {
   display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-  padding: 12px 20px; background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 10px 24px; background: var(--header-bg); color: var(--header-text);
+  border-bottom: 3px solid var(--gold);
   position: sticky; top: 0; z-index: 10;
 }
-.brand { display: flex; align-items: center; gap: 10px; }
-.brand small { display: block; color: var(--muted); font-size: 0.8rem; }
-.brand-mark {
-  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 8px;
-  background: var(--primary); color: var(--primary-text); font-weight: 700;
-}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand strong { font-family: var(--font-head); font-weight: 700; font-size: 1.08rem; }
+.brand small { display: block; opacity: 0.78; font-size: 0.8rem; }
+.brand-mark { flex: none; }
 .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.app-header .btn.ghost { color: var(--header-text); border-color: rgb(255 255 255 / 0.35); }
+.app-header .btn.ghost:hover { background: rgb(255 255 255 / 0.1); }
+.app-header .btn:not(.ghost) { background: var(--gold); border-color: var(--gold); color: #13213a; }
+.app-header :focus-visible { outline-color: var(--gold); }
 
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 20px; box-shadow: var(--shadow); margin-bottom: 16px;
+  padding: 20px; margin-bottom: 16px;
 }
-.hero { padding: 32px; }
+
+/* --- sello: marca de la app y de la bitácora sellada --- */
+.seal { display: block; }
+.seal-ring { fill: var(--gold); }
+.seal-inner { fill: var(--seal-core); }
+.seal-check { fill: none; stroke: var(--gold); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.seal-text { fill: var(--seal-core); font: 700 10px var(--font-head); }
+
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center;
+  padding: 36px 40px; margin-bottom: 24px;
+  background: var(--surface); border: 1px solid var(--border); border-top: 4px solid var(--navy); border-radius: var(--radius);
+}
+:root[data-theme='dark'] .hero { border-top-color: var(--gold); }
+.hero h1 { font-size: 2.3rem; max-width: 18ch; }
+.hero .lead { font-size: 1.08rem; color: var(--muted); max-width: 60ch; margin: 0 0 20px; }
+.hero-seal { transform: rotate(-8deg); }
+@media (prefers-reduced-motion: no-preference) {
+  /* único movimiento automático: el sello "se estampa" al abrir la portada */
+  .hero-seal { animation: stamp 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.2) 0.15s both; }
+  @keyframes stamp {
+    from { opacity: 0; transform: rotate(-20deg) scale(1.35); }
+    to { opacity: 1; transform: rotate(-8deg) scale(1); }
+  }
+}
 .muted { color: var(--muted); }
 
 .btn {
   border: 1px solid var(--primary); background: var(--primary); color: var(--primary-text);
-  border-radius: 8px; padding: 8px 14px; font: inherit; cursor: pointer;
+  border-radius: var(--radius); padding: 8px 16px; font: inherit; font-weight: 700; cursor: pointer;
 }
-.btn:hover { filter: brightness(1.08); }
+.btn:hover { filter: brightness(1.12); }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn.ghost { background: transparent; color: var(--text); border-color: var(--border); }
+.btn.ghost { background: transparent; color: var(--text); border-color: var(--border); font-weight: 400; }
+.btn.ghost:hover { background: var(--surface-2); filter: none; }
 .btn.danger { background: var(--danger); border-color: var(--danger); color: #fff; }
 .btn.small { padding: 4px 10px; font-size: 0.85rem; }
 .btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
@@ -87,7 +129,8 @@ a { color: var(--primary); }
 
 .badge {
   display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 0.8rem;
-  border: 1px solid currentColor;
+  border: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+  background: color-mix(in srgb, currentColor 10%, transparent);
   white-space: nowrap; /* "No aplica" en dos líneas se veía roto */
 }
 .badge.success { color: var(--success); }
@@ -134,7 +177,7 @@ input[type='checkbox'], input[type='radio'] { width: auto; flex: none; min-width
 
 .tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: -1px; }
 .tab { border: 1px solid var(--border); border-bottom: none; background: var(--surface-2); color: var(--text); padding: 8px 14px; border-radius: 8px 8px 0 0; cursor: pointer; font: inherit; }
-.tab.active { background: var(--surface); font-weight: 600; }
+.tab.active { background: var(--surface); font-weight: 700; box-shadow: inset 0 3px 0 var(--gold); }
 .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 12px; }
 .filters select, .filters input { width: auto; flex: 1 1 180px; }
 .checklist { list-style: none; margin: 0; padding: 0; }
@@ -146,13 +189,13 @@ input[type='checkbox'], input[type='radio'] { width: auto; flex: none; min-width
 
 .table { width: 100%; border-collapse: collapse; }
 .table th, .table td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
-.table th { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; }
+.table th { font-size: 0.85rem; color: var(--muted); font-weight: 700; }
 .clickable { cursor: pointer; }
 .clickable:hover { background: var(--surface-2); }
 .link { background: none; border: none; color: var(--primary); font: inherit; cursor: pointer; padding: 0; text-decoration: underline; }
 .clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-.requirement { margin: 8px 0; padding: 10px 14px; border-left: 4px solid var(--primary); background: var(--surface-2); border-radius: 0 8px 8px 0; }
+.requirement { margin: 8px 0; padding: 10px 14px; border-left: 4px solid var(--gold); background: var(--surface-2); border-radius: 0 8px 8px 0; }
 .status-options { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .status-option { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
 .status-option.on { border-color: var(--primary); background: var(--surface-2); }
@@ -184,6 +227,7 @@ input[type='checkbox'], input[type='radio'] { width: auto; flex: none; min-width
 /* --- integridad e importación --- */
 .integrity { border: 1px solid var(--border); border-left: 4px solid var(--success); border-radius: 8px; padding: 10px 14px; margin: 8px 0; }
 .integrity.bad { border-left-color: var(--danger); }
+.integrity-head .seal { float: left; margin: 2px 10px 0 0; }
 .integrity ul { margin: 6px 0; }
 .warning-box { border: 1px solid var(--warning); border-radius: 8px; padding: 10px; margin: 8px 0; }
 
@@ -193,6 +237,11 @@ input[type='checkbox'], input[type='radio'] { width: auto; flex: none; min-width
 .stats strong { font-size: 1.5rem; }
 .stats span { color: var(--muted); font-size: 0.85rem; }
 .warning-text { color: var(--warning); }
+
+/* --- pie de página --- */
+.app-footer { background: var(--header-bg); color: var(--header-text); border-top: 3px solid var(--gold); }
+.footer-inner { max-width: 1100px; margin: 0 auto; padding: 18px 16px; display: flex; align-items: center; gap: 12px; }
+.footer-inner p { margin: 0; font-size: 0.9rem; opacity: 0.9; }
 
 /* --- celular y pantallas angostas --- */
 .show-sm { display: none; }
@@ -208,12 +257,15 @@ select, input { min-width: 0; max-width: 100%; } /* un <select> con opciones lar
   body { font-size: 15px; }
   input, select, textarea { font-size: 16px; } /* evita el zoom automático de iOS al enfocar */
   .app-header { position: static; padding: 8px 12px; gap: 8px; }
-  .brand-mark { width: 30px; height: 30px; }
+  .brand-mark { width: 32px; height: 32px; }
   .header-actions { gap: 6px; }
   .header-actions .btn { padding: 6px 10px; }
   .container { padding: 14px 10px 48px; }
   .card { padding: 14px; }
-  .hero { padding: 20px 16px; }
+  .hero { grid-template-columns: 1fr; padding: 22px 16px; gap: 16px; }
+  .hero h1 { font-size: 1.6rem; }
+  .hero-seal { order: -1; width: 112px; height: 112px; justify-self: end; margin: 0 8px -8px 0; }
+  .footer-inner { align-items: flex-start; }
   h1 { font-size: 1.3rem; }
   h2 { font-size: 1.1rem; }
   .page-header { gap: 10px; margin-bottom: 12px; }
