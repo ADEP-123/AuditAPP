@@ -55,8 +55,10 @@ body {
   color: var(--text);
   font: 16px/1.55 var(--font-body);
 }
-#root { min-height: 100dvh; display: flex; flex-direction: column; }
-#root > main { flex: 1 0 auto; width: 100%; }
+/* encabezado y pie fijos: solo la zona central se desplaza */
+#root { height: 100dvh; display: flex; flex-direction: column; }
+#root > :not(main) { flex: none; }
+#root > main { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 
 h1, h2, h3 { font-family: var(--font-head); font-weight: 700; line-height: 1.2; margin: 0 0 0.5em; letter-spacing: -0.01em; }
 h1 { font-size: 1.75rem; }
@@ -64,13 +66,12 @@ h2 { font-size: 1.3rem; font-weight: 600; }
 h3 { font-size: 1.08rem; font-weight: 600; }
 a { color: var(--primary); }
 
-.container { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
+.container { padding: 24px max(16px, calc((100% - 1068px) / 2)) 32px; }
 
 .app-header {
   display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
   padding: 10px 24px; background: var(--header-bg); color: var(--header-text);
   border-bottom: 3px solid var(--gold);
-  position: sticky; top: 0; z-index: 10;
 }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand strong { font-family: var(--font-head); font-weight: 700; font-size: 1.08rem; }
@@ -183,7 +184,7 @@ input[type='checkbox'], input[type='radio'] { width: auto; flex: none; min-width
 .checklist { list-style: none; margin: 0; padding: 0; }
 .checklist li { padding: 10px 4px; border-bottom: 1px solid var(--border); }
 .checklist .badge { margin-left: 6px; }
-.scroll-list { max-height: min(60vh, 640px); overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--border); border-radius: 8px; padding: 0 10px; }
+.scroll-list { max-height: max(240px, calc(100dvh - 505px)); /* que la página de criterios quepa sin desplazar */ overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--border); border-radius: 8px; padding: 0 10px; }
 .scroll-list .empty { padding: 12px 0; }
 .only-selected { align-items: center; white-space: nowrap; font-size: 0.9rem; }
 
@@ -240,7 +241,7 @@ input[type='checkbox'], input[type='radio'] { width: auto; flex: none; min-width
 
 /* --- pie de página --- */
 .app-footer { background: var(--header-bg); color: var(--header-text); border-top: 3px solid var(--gold); }
-.footer-inner { max-width: 1100px; margin: 0 auto; padding: 18px 16px; display: flex; align-items: center; gap: 12px; }
+.footer-inner { max-width: 1100px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
 .footer-inner p { margin: 0; font-size: 0.9rem; opacity: 0.9; }
 
 /* --- celular y pantallas angostas --- */
@@ -256,22 +257,23 @@ select, input { min-width: 0; max-width: 100%; } /* un <select> con opciones lar
   .show-sm { display: inline; }
   body { font-size: 15px; }
   input, select, textarea { font-size: 16px; } /* evita el zoom automático de iOS al enfocar */
-  .app-header { position: static; padding: 8px 12px; gap: 8px; }
+  .app-header { padding: 8px 12px; gap: 8px; }
   .brand-mark { width: 32px; height: 32px; }
   .header-actions { gap: 6px; }
   .header-actions .btn { padding: 6px 10px; }
-  .container { padding: 14px 10px 48px; }
+  .container { padding: 14px 10px 24px; }
   .card { padding: 14px; }
   .hero { grid-template-columns: 1fr; padding: 22px 16px; gap: 16px; }
   .hero h1 { font-size: 1.6rem; }
   .hero-seal { order: -1; width: 112px; height: 112px; justify-self: end; margin: 0 8px -8px 0; }
-  .footer-inner { align-items: flex-start; }
+  .footer-inner { padding: 8px 12px; gap: 8px; }
+  .footer-inner p { font-size: 0.75rem; line-height: 1.35; }
   h1 { font-size: 1.3rem; }
   h2 { font-size: 1.1rem; }
   .page-header { gap: 10px; margin-bottom: 12px; }
   .page-header .row { width: 100%; }
   .filters select, .filters input[type='search'] { flex: 1 1 100%; }
-  .scroll-list { max-height: 55vh; padding: 0 8px; }
+  .scroll-list { max-height: 55dvh; padding: 0 8px; }
   .table th, .table td { padding: 8px 4px; }
   .kv { grid-template-columns: 1fr; gap: 0 0; }
   .kv dd { margin-bottom: 6px; }
